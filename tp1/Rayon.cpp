@@ -59,7 +59,7 @@ Rayon::~Rayon()
  * Retour: (string) la valeur de categorie_
  ****************************************************************************/
 string Rayon::obtenirCategorie() const
-{
+{
     return categorie_;
 }
 
@@ -124,21 +124,23 @@ void Rayon::ajouterProduit(Produit * produit)
     tableau est non null et que la capacité est atteinte, on augmente la capacité de 5 du tableau
     */
     if (tousProduits_ == nullptr){								//Si le tableau est nul on rajoute 5 cases.
-		tousProduits_ = new Produit*[5];
+		capaciteProduits_ = 5;
+		tousProduits_ = new Produit*[capaciteProduits_];
 		tousProduits_[0] = produit;
     }
 	else {
 		int i = 0;												// On parcourt le tableau tant qu'on ne trouve pas une case vide. 
 		while (tousProduits_[i] != nullptr) {					// Remarque: j'utilise un while et non une boucle for car ca me permet
-			i++;												// de sauvegarder la valeur de i.
+			i++;												// de sauvegarder la valeur de i (la position dans le tableau).
 		}
-		if (tousProduits_[i] == nullptr) {						//Si je trouve une case vide, je rajoute le produit.
+		if (tousProduits_[i] == nullptr && i < capaciteProduits_) { //Si je trouve une case vide, je rajoute le produit.
 			tousProduits_[i] = produit;
 		}
 		else {													//Sinon je rajoute 5 cases vides. Puis je rajoute le produit.
 			for (int j = i; j = i + 5; j++) {
 				tousProduits_[j] = new Produit;
 			}
+			capaciteProduits_ += 5;
 			tousProduits_[(i + 1)] = produit;
 		}
 	}
