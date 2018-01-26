@@ -70,7 +70,7 @@ string Rayon::obtenirCategorie() const
  * Retour: (Produit) la valeur de tousProduits_
  ****************************************************************************/
 
-Produit Rayon::obtenirTousProduits() const
+Produit** Rayon::obtenirTousProduits() const
 {
     return tousProduits_;
 }
@@ -86,6 +86,18 @@ int Rayon::obtenirNombreProduits() const
 {
     return nombreProduits_;
 }
+/****************************************************************************
+* Fonction:   Rayon::obtenirCapaciteProduits() const
+* Description: Retourne capaciteProduits_
+* ParamËtres: aucun
+* Retour: (int) la valeur de capaciteProduits_
+****************************************************************************/
+
+int Rayon::obtenirCapaciteProduits() const
+{
+	return capaciteProduits_;
+}
+
 /****************************************************************************
  * Fonction:   Rayon::modifierCategorie()
  * Description: Modifie l'attribut categorie_
@@ -105,22 +117,31 @@ void Rayon::modifierCategorie (string categorie)
  * Retour:
  ****************************************************************************/
 
-void Rayon::ajouterProduits(Produit * produit)
+void Rayon::ajouterProduit(Produit * produit)
 {
     /*A COMPLETER ; ajoute le pointeur d’un objet produit au tableau
     dynamique. Si le tableau est null, on crée le tableau initial avec une capacité de 5. Si le
     tableau est non null et que la capacité est atteinte, on augmente la capacité de 5 du tableau
-     */
-    if (produit == nullptr){
-        listeTousProduits = new Produit*[5];
+    */
+    if (tousProduits_ == nullptr){								//Si le tableau est nul on rajoute 5 cases.
+		tousProduits_ = new Produit*[5];
+		tousProduits_[0] = produit;
     }
-    else {
-        
-    }
-    
-    
-    
-    
+	else {
+		int i = 0;												// On parcourt le tableau tant qu'on ne trouve pas une case vide. 
+		while (tousProduits_[i] != nullptr) {					// Remarque: j'utilise un while et non une boucle for car ca me permet
+			i++;												// de sauvegarder la valeur de i.
+		}
+		if (tousProduits_[i] == nullptr) {						//Si je trouve une case vide, je rajoute le produit.
+			tousProduits_[i] = produit;
+		}
+		else {													//Sinon je rajoute 5 cases vides. Puis je rajoute le produit.
+			for (int j = i; j = i + 5; j++) {
+				tousProduits_[j] = new Produit;
+			}
+			tousProduits_[(i + 1)] = produit;
+		}
+	}
 }
 
 /****************************************************************************
