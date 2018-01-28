@@ -204,6 +204,22 @@ void Client::acheter(Produit * produit)
 }
 
 /****************************************************************************
+ * Fonction:   Client::afficher()
+ * Description: Affiche l’etat des attributs.
+ * ParamËtres: aucun
+ * Retour:
+ ****************************************************************************/
+
+void Client::afficherAttributs() const
+{
+    cout << "Nom : " << nom_ << endl;
+    cout << "Prénom : " << prenom_ << endl;
+    cout << "Identifiant : "<< identifiant_ << endl;
+    cout << "Code Postal : "<< codePostal_ << endl;
+    cout << "Date de Naissance : "<< dateNaissance_ << endl;
+}
+
+/****************************************************************************
  * Fonction:   Client::afficherPanier() const
  * Description: Affiche le contenu du panier s'il n'est pas vide
  * ParamËtres: aucun

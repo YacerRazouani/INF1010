@@ -129,16 +129,27 @@ void Rayon::ajouterProduit(Produit * produit)
 
 /****************************************************************************
  * Fonction:   Rayon::afficher()
- * Description: Affiche ...
+ * Description: Affiche l'état des attributs
  * ParamËtres: aucun
  * Retour:
  ****************************************************************************/
 
-void Rayon::afficher()
+void Rayon::afficher() const
 {
-    cout << "La categorie est : " << categorie_ << endl;
-    cout << "Le nombre de produit est : " << nombreProduits_ << endl;
-    cout << "La capacité est : " << capaciteProduits_ << endl;
+    cout << "La categorie du rayon est : " << categorie_ << endl;
+    cout << "Le nombre de produits du rayon est : " << nombreProduits_ << endl;
+    cout << "La capacité du rayon est : " << capaciteProduits_ << endl;
+    
+    cout << "Le contenu du rayon est : ";
+    if (tousProduits_[0] == nullptr) {
+        cout << "vide" << endl;
+    }
+    else {
+        for (int i = 0; i < capaciteProduits_; i++) {
+            cout << "Article numero " << (i + 1) << " " << tousProduits_[i]->obtenirNom << " reference: " << tousProduits_[i]->obtenirReference << " prix: " << tousProduis_[i]->obtenirPrix << endl;
+        }
+    }
+
     // A COMPLETER;
 
 }

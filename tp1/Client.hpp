@@ -38,6 +38,7 @@ public:
     
     // autres méthodes
     void acheter (Produit * produit);
+    void afficherAttributs() const;
     void afficherPanier() const;
     void livrerPanier();
     
