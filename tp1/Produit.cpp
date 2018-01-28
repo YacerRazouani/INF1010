@@ -1,5 +1,5 @@
 /****************************************************************************
- * Fichier: Produit.hpp
+ * Fichier: Produit.cpp
  * Auteur: Amar Ghaly et Yacer Razouani
  * Date: 23 janvier 2018
  * Mise a jour :
@@ -10,23 +10,8 @@
 
 /****************************************************************************
  * Fonction: Produit::Produit()
- * Description: Constructeur par dÈfaut
- * ParamËtres: aucun
- * Retour: aucun
- ****************************************************************************/
-Produit::Produit()
-{
-    // Constructeur par defaut
-    nom_ = "outil";
-    reference_ = 0;
-    prix_ = 0.0;
-    
-}
-
-/****************************************************************************
- * Fonction: Produit::Produit()
- * Description: Constructeur par parametre
- * ParamËtres: aucun
+ * Description: Fusion des Constructeurs par parametre et par défaut
+ * ParamËtres: (string) nom, (int) reference, (double) prix
  * Retour: aucun
  ****************************************************************************/
 Produit::Produit(string nom, int reference, double prix)
@@ -50,7 +35,7 @@ Produit::~Produit()
 }
 
 /****************************************************************************
- * Fonction:   Produit::obtenirNom()
+ * Fonction:   Produit::obtenirNom() const
  * Description: Retourne l'attribut nom_
  * ParamËtres: aucun
  * Retour: (string) la valeur de nom_

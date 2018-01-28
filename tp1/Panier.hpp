@@ -1,10 +1,10 @@
-
-//  panier.cpp
-//  Created by Martine Bellaiche on 18-01-22.
-//  Copyright © 2018 Martine Bellaiche. All rights reserved.
-//
-
-
+/****************************************************************************
+ * Fichier: Panier.hpp
+ * Auteur: Amar Ghaly et Yacer Razouani
+ * Date: 23 janvier 2018
+ * Mise a jour :
+ * Description: Definition de la classe Panier
+ ****************************************************************************/
 
 #ifndef Panier_hpp
 #define Panier_hpp
@@ -16,18 +16,21 @@
 class Panier
 {
 public:
+    // Constructeur
     Panier (int capacite);
+    // Destructeur
+    ~Produit();
     // methodes d'accès
-    Produit **  obtenirContenuPanier();
-    int obtenirNombreContenu();
-    double obtenirTotalApayer();
+    Produit **  obtenirContenuPanier() const;
+    int obtenirNombreContenu() const;
+    double obtenirTotalApayer() const;
     
     // méthodes de modification
     
     // autres méthodes
     void ajouter ( Produit * prod);
     void livrer();
-    void afficher();
+    void afficher() const;
     
 private:
     

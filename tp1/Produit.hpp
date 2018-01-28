@@ -1,10 +1,10 @@
-//
-//  Produit.hpp
-//  TP1
-//
-//  Created by Amar Ghaly on 18-01-23.
-//  Copyright © 2018 Amar Ghaly. All rights reserved.
-//
+/****************************************************************************
+ * Fichier: Produit.hpp
+ * Auteur: Amar Ghaly et Yacer Razouani
+ * Date: 23 janvier 2018
+ * Mise a jour :
+ * Description: Définition de la classe Produit
+ ****************************************************************************/
 
 #ifndef Produit_hpp
 #define Produit_hpp
@@ -17,10 +17,11 @@ using namespace std;
 class Produit
 {
 public:
-    // Constructeurs par defaut et par parametres
-    Produit();
+    // Fusion des constructeurs par defaut et par parametres
+    Produit(string nom = "outil", int reference = 0, double prix = 0.0);
+    
+    // Destructeur
     ~Produit();
-    Produit(string nom, int reference, double prix);
     
     // Methodes d'acces
     string obtenirNom() const;

@@ -10,25 +10,35 @@
 /****************************************************************************
  * Fonction: Panier::Panier(int capacite)
  * Description: Constructeur par parametre
- * ParamËtres: aucun
- * Retour: aucun
+ * ParamËtres: int capacite * Retour: aucun
  ****************************************************************************/
 Panier::Panier(int capacite)
 {
     // Constructeur par parametre
-	contenuPanier_ = 0;
+	contenuPanier_ = nullptr;
 	nombreContenu_ = 0;
 	capaciteContenu_ = capacite;
-	totalAPayer_ = 0;
+	totalAPayer_ = 0.0;
+}
+/****************************************************************************
+ * Fonction: Panier::~Panier()
+ * Description: Destructeur par defaut
+ * ParamËtres: aucun
+ * Retour: aucun
+ ****************************************************************************/
+Panier::~Panier()
+{
+    // Destructeur d'un panier
 }
 
+/
 /****************************************************************************
  * Fonction: Panier::obtenirContenuPanier()
  * Description: retourne contenuPanier_
- * ParamËtres: aucun
+ * Parametres: aucun
  * Retour: Produit**
  ****************************************************************************/
-Produit** Panier::obtenirContenuPanier()
+Produit** Panier::obtenirContenuPanier() const
 {
 	return contenuPanier_;
 }
@@ -39,7 +49,7 @@ Produit** Panier::obtenirContenuPanier()
  * ParamËtres: aucun
  * Retour: int
  ****************************************************************************/
-int Panier::obtenirNombreContenu()
+int Panier::obtenirNombreContenu() const
 {
     return nombreContenu_;
 }
@@ -51,7 +61,7 @@ int Panier::obtenirNombreContenu()
  * Retour: double
  ****************************************************************************/
 
-double Panier::obtenirTotalApayer()
+double Panier::obtenirTotalApayer() const
 {
     return totalAPayer_;
 }
@@ -105,7 +115,7 @@ void Panier::livrer()
  * Retour:
  ****************************************************************************/
 
-void Panier::afficher()
+void Panier::afficher() const
 {
 	cout << "Le contenu du panier est : ";
 	if (contenuPanier_[0] == nullptr) {

@@ -8,31 +8,16 @@
 
 #include "Rayon.hpp"
 #include "Produit.hpp"
-/****************************************************************************
- * Fonction: Rayon::Rayon()
- * Description: Constructeur par dÈfaut
- * ParamËtres: aucun
- * Retour: aucun
- ****************************************************************************/
-Rayon::Rayon()
-{
-    // Constructeur par defaut
-    categorie_ = "inconnu";
-    tousProduits_ = nullptr;
-    capaciteProduits_ = 0;
-    nombreProduits_ = 0;
-    
-}
 
 /****************************************************************************
  * Fonction: Rayon::Rayon()
- * Description: Constructeur par parametre
- * ParamËtres: aucun
+ * Description: Fusion des Constructeurs par parametre/par défaut
+ * ParamËtres: (string) categorie
  * Retour: aucun
  ****************************************************************************/
 Rayon::Rayon(string categorie)
 {
-    // Constructeur par parametre
+    // Constructeur
     categorie_ = categorie;
     tousProduits_ = nullptr;
     capaciteProduits_ = 0;
@@ -49,7 +34,7 @@ Rayon::Rayon(string categorie)
  ****************************************************************************/
 Rayon::~Rayon()
 {
-    // Destructeur d'un produit
+    // Destructeur d'un rayon
 }
 
 /****************************************************************************
@@ -119,10 +104,6 @@ void Rayon::modifierCategorie (string categorie)
 
 void Rayon::ajouterProduit(Produit * produit)
 {
-    /*A COMPLETER ; ajoute le pointeur d’un objet produit au tableau
-    dynamique. Si le tableau est null, on crée le tableau initial avec une capacité de 5. Si le
-    tableau est non null et que la capacité est atteinte, on augmente la capacité de 5 du tableau
-    */
     if (tousProduits_ == nullptr){								//Si le tableau est nul on rajoute 5 cases.
 		capaciteProduits_ = 5;
 		tousProduits_ = new Produit*[capaciteProduits_];

@@ -1,10 +1,10 @@
-//
-//  Client.hpp
-//  TP1
-//
-//  Created by Amar Ghaly on 18-01-23.
-//  Copyright © 2018 Amar Ghaly. All rights reserved.
-//
+/****************************************************************************
+ * Fichier: Client.hpp
+ * Auteur: Amar Ghaly et Yacer Razouani
+ * Date: 23 janvier 2018
+ * Mise a jour :
+ * Description: Definition de la classe Client
+ ****************************************************************************/
 
 #ifndef Client_hpp
 #define Client_hpp
@@ -16,14 +16,18 @@ using namespace std;
 class Client
 {
 public:
-    Client (string  nom,  string prenom, int identifiant, string codePostal,  long date);
+    //Constructeur
+    Client (string nom = "aucun" ,  string prenom = "aucun", int identifiant = 0, string codePostal = "aucun" ,  long dateNaissance = 0, Panier* panier = nullptr);
+    //Destructeur
+    ~Client();
+    
     // methodes d'acces
     
-    string obtenirNom() ;
-    string obtenirPrenom() ;
-    int obtenirIdentifiant() ;
-    string obtenirCodePostal() ;
-    long obtenirDateNaissance() ;
+    string obtenirNom() const;
+    string obtenirPrenom() const;
+    int obtenirIdentifiant() const;
+    string obtenirCodePostal() const;
+    long obtenirDateNaissance() const;
     
     // methodes de modification
     void modifierNom(string nom) ;
@@ -33,8 +37,8 @@ public:
     void modifierDateNaissance(long date);
     
     // autres méthodes
-    void acheter (Produit * prod);
-    void afficherPanier();
+    void acheter (Produit * produit);
+    void afficherPanier() const;
     void livrerPanier();
     
     

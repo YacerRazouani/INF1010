@@ -1,9 +1,10 @@
-/********************************************
- * Titre: Travail pratique #1 -Rayon.h
- * Date: 20 janvier 2018
- * Auteur:
- *******************************************/
-
+/****************************************************************************
+ * Fichier: Rayon.hpp
+ * Auteur: Amar Ghaly et Yacer Razouani
+ * Date: 23 janvier 2018
+ * Mise a jour :
+ * Description: Definition de la classe Rayon
+ ****************************************************************************/
 #ifndef Rayon_hpp
 #define Rayon_hpp
 
@@ -15,9 +16,8 @@ using namespace std;
 class Rayon
 {
 public:
-    // Constructeurs par defaut et par paraametres
-    Rayon();
-    Rayon(string categorie);
+    // Fusion des constructeurs par defaut et par parametres
+    Rayon(string categorie = "inconnu", Produit ** tousProduits = nullptr, int capaciteProduits = 0,int nombreProduits = 0) ;
     // Destructeur par defaut
     ~Rayon();
     
@@ -34,7 +34,7 @@ public:
     
     // autres methodes
     void ajouterProduit (Produit * produit);
-    void afficher();
+    void afficher() const;
     
     
 private:
