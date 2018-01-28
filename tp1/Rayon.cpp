@@ -32,7 +32,7 @@ Rayon::Rayon()
  ****************************************************************************/
 Rayon::Rayon(string categorie)
 {
-    // Constructeur par defaut
+    // Constructeur par parametre
     categorie_ = categorie;
     tousProduits_ = nullptr;
     capaciteProduits_ = 0;
@@ -147,7 +147,7 @@ void Rayon::ajouterProduit(Produit * produit)
 }
 
 /****************************************************************************
- * Fonction:   Produit::afficher()
+ * Fonction:   Rayon::afficher()
  * Description: Affiche ...
  * ParamËtres: aucun
  * Retour:

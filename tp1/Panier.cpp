@@ -3,123 +3,120 @@
  * Auteur: Amar Ghaly et Yacer Razouani
  * Date: 23 janvier 2018
  * Mise a jour :
- * Description: Implementation de la classe Rayon
+ * Description: Implementation de la classe Panier
  ****************************************************************************/
 
 #include "Panier.hpp"
 /****************************************************************************
- * Fonction: Rayon::Rayon()
- * Description: Constructeur par dÈfaut
- * ParamËtres: aucun
- * Retour: aucun
- ****************************************************************************/
-Rayon::Rayon()
-{
-    // Constructeur par defaut
-    categorie_ = "inconnu";
-    tousProduits_ = nullptr;
-    capaciteProduits_ = 0;
-    nombreProduits_ = 0;
-    
-}
-
-/****************************************************************************
- * Fonction: Rayon::Rayon()
+ * Fonction: Panier::Panier(int capacite)
  * Description: Constructeur par parametre
  * ParamËtres: aucun
  * Retour: aucun
  ****************************************************************************/
-Rayon::Rayon(string categorie)
+Panier::Panier(int capacite)
 {
-    // Constructeur par defaut
-    categorie_ = categorie;
-    tousProduits_ = nullptr;
-    capaciteProduits_ = 0;
-    nombreProduits_ = 0;
-    
-}
-
-
-/****************************************************************************
- * Fonction: Rayon::~Rayon()
- * Description: Destructeur par defaut
- * ParamËtres: aucun
- * Retour: aucun
- ****************************************************************************/
-Rayon::~Rayon()
-{
-    // Destructeur d'un produit
+    // Constructeur par parametre
+	contenuPanier_ = 0;
+	nombreContenu_ = 0;
+	capaciteContenu_ = capacite;
+	totalAPayer_ = 0;
 }
 
 /****************************************************************************
- * Fonction:   Rayon::obtenirCategorie()
- * Description: Retourne le nom_
+ * Fonction: Panier::obtenirContenuPanier()
+ * Description: retourne contenuPanier_
  * ParamËtres: aucun
- * Retour: (string) la valeur de categorie_
+ * Retour: Produit**
  ****************************************************************************/
-string Rayon::obtenirCategorie() const
+Produit** Panier::obtenirContenuPanier()
+{
+	return contenuPanier_;
+}
+
+/****************************************************************************
+ * Fonction:   Panier::obtenirNombreContenu()
+ * Description: Retourne le nombreContenu_
+ * ParamËtres: aucun
+ * Retour: int
+ ****************************************************************************/
+int Panier::obtenirNombreContenu()
 {
-    return categorie_;
+    return nombreContenu_;
 }
 
 /****************************************************************************
- * Fonction:   Rayon::obtenirTousProduits() const
- * Description: Retourne tousProduits_
+ * Fonction:   Panier::obtenirTotalApayer()
+ * Description: Retourne totalAPayer_
  * ParamËtres: aucun
- * Retour: (Produit) la valeur de tousProduits_
+ * Retour: double
  ****************************************************************************/
 
-Produit Rayon::obtenirTousProduits() const
+double Panier::obtenirTotalApayer()
 {
-    return tousProduits_;
+    return totalAPayer_;
 }
 
 /****************************************************************************
- * Fonction:   Rayon::obtenirNombreProduits() const
- * Description: Retourne nombreProduits_
- * ParamËtres: aucun
- * Retour: (int) la valeur de nombreProduits_
- ****************************************************************************/
-
-int Rayon::obtenirNombreProduits() const
-{
-    return nombreProduits_;
-}
-/****************************************************************************
- * Fonction:   Rayon::modifierCategorie()
- * Description: Modifie l'attribut categorie_
- * ParamËtres: string caterogie
+ * Fonction:   Panier::ajouter ( Produit * prod)
+ * Description: Ajoute le pointeur Produit * prod au tableau de produits
+ * ParamËtres: Produit * prod
  * Retour: aucun
  ****************************************************************************/
 
-void Rayon::modifierCategorie (string categorie)
+void Panier::ajouter(Produit * prod)
 {
-    categorie_ = categorie;
+	int i = 0;												
+	while (contenuPanier_[i] != nullptr) {
+		i++;												
+	}
+	if (contenuPanier_[i] == nullptr && i < capaciteContenu_) {
+		contenuPanier_[i] = prod;
+	}
+	else {
+		for (int j = (capaciteContenu_ - 1); j < (capaciteContenu_ * 2); j++) {
+			contenuPanier_[j] = new Produit;
+		}
+		capaciteContenu_ *= 2;
+		contenuPanier_[(i + 1)] = prod;
+	}
+	totalAPayer_ += prod->obtenirPrix;
 }
 
 /****************************************************************************
- * Fonction:   Rayon::ajouterProduits()
- * Description: Modifie l'attribut tousProduits_
- * ParamËtres: Produit* produit
- * Retour:
- ****************************************************************************/
+* Fonction:   Panier::livrer()
+* Description: Supprime le contenu du tableau et re-initialise l'etat des autres attributs
+* ParamËtres: aucun
+* Retour: aucun
+****************************************************************************/
 
-void Rayon::ajouterProduits(Produit * produit)
+void Panier::livrer()
 {
-    /*A COMPLETER ; ajoute le pointeur d’un objet produit au tableau
-     dynamique. Si le tableau est null, on crée le tableau initial avec une capacité de 5. Si le
-     tableau est non null et que la capacité est atteinte, on augmente la capacité de 5 du tableau
-     */
+	for (int i = 0; i < capaciteContenu_; i++) {
+		delete[] contenuPanier_[i];
+	}
+
+	delete[] contenuPanier_;
 }
 
 /****************************************************************************
- * Fonction:   Produit::afficher()
+ * Fonction:   Panier::afficher()
  * Description: Affiche ...
  * ParamËtres: aucun
  * Retour:
  ****************************************************************************/
 
-void Produit::afficher()
+void Panier::afficher()
 {
-    // A COMPLETER;
+	cout << "Le contenu du panier est : ";
+	if (contenuPanier_[0] == nullptr) {
+		cout << "vide" << endl;
+	}
+	else {
+		for (int i = 0; i < capaciteContenu_; i++) {
+			cout << "Article numero " << (i + 1) << " " << contenuPanier_[i]->obtenirNom << " reference: " << contenuPanier_[i]->obtenirReference << " prix: " << contenuPanier_[i]->obtenirPrix << endl;
+		}
+	}
+	cout << "Le nombre de contenu dans le panier est de : " << nombreContenu_ << endl;
+	cout << "La capacite du panier est de : " << capaciteContenu_ << endl;
+	cout << "Le total a payer est de : " << totalAPayer_ << endl;
 }
