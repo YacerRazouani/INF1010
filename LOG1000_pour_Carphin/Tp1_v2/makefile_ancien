@@ -1,0 +1,19 @@
+all : build pari
+
+pari: main.o HashMap.o SomeKeyHash.o 
+	g++ main.o HashMap.o SomeKeyHash.o -o pari
+
+main.o: src/main.cpp src/HashMap.h
+	g++ -c build/main.cpp build/HashMap.h
+
+HashMap.o: src/HashMap.cpp src/HashMap.h src/HashNode.h src/SomeKeyHash.h
+	g++ -c build/HashMap.cpp build/HashMap.h build/HashNode.h build/SomeKeyHash.h
+
+SomeKeyHash.o: src/SomeKeyHash.cpp src/SomeKeyHash.h
+	g++ -c build/SomeKeyHash.cpp build/SomeKeyHash.h
+
+build:
+	@mkdir -p build
+clean:
+	rm *.o pari
+
