@@ -32,6 +32,7 @@ Produit::Produit(string nom, int reference, double prix)
 Produit::~Produit()
 {
     // Destructeur d'un produit
+	cout << "Le produit a ete detruit" << endl;
 }
 
 /****************************************************************************

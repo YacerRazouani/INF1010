@@ -15,7 +15,7 @@
  * ParamËtres: aucun
  * Retour: aucun
  ****************************************************************************/
-Client::Client(string nom, string prenom, int identifiant, string codePostal, long dateNaissance, Panier* panier)
+Client::Client(string nom , string prenom, int identifiant, string codePostal, long dateNaissance, Panier* panier)
 {
     // Constructeur
     nom_ = nom;
@@ -179,7 +179,7 @@ void Client::livrerPanier()
 void Client::acheter(Produit * produit)
 {
     if (monPanier_ == nullptr){								//Si le tableau est nul on crée un objet Panier de 4 produit
-        capaciteContenu_= 4;
+        monPanier_ 4;
         monPanier.contenuPanier_ = new Produit*[capaciteContenu_];
         monPanier.contenuPanier_[0] = produit;
     }
@@ -201,21 +201,6 @@ void Client::acheter(Produit * produit)
     }
 }
 
-/****************************************************************************
- * Fonction:   Client::afficher()
- * Description: Affiche l’etat des attributs.
- * ParamËtres: aucun
- * Retour:
- ****************************************************************************/
-
-void Client::afficherAttributs() const
-{
-    cout << "Nom : " << nom_ << endl;
-    cout << "Prénom : " << prenom_ << endl;
-    cout << "Identifiant : "<< identifiant_ << endl;
-    cout << "Code Postal : "<< codePostal_ << endl;
-    cout << "Date de Naissance : "<< dateNaissance_ << endl;
-}
 
 /****************************************************************************
  * Fonction:   Client::afficherPanier() const
@@ -226,12 +211,13 @@ void Client::afficherAttributs() const
 
 void Client::afficherPanier() const
 {
-    cout << "Le contenu du panier est : ";
-    if (monPanier.contenuPanier_[0] == nullptr) {
-        cout << "vide" << endl;
-    }
-    else {
-        for (int i = 0; i < monPanier.capaciteContenu_; i++) {
-            cout << "Article numero " << (i + 1) << " " << monPanier.contenuPanier_[i]->obtenirNom << " reference: " << monPanier.contenuPanier_[i]->obtenirReference << " prix: " << monPanier.contenuPanier_[i]->obtenirPrix << endl;
-        }
-    }}
+	cout << "Le contenu du panier est : ";
+	if (monPanier_->obtenirContenuPanier[0] == nullptr) {
+		cout << "vide" << endl;
+	}
+	else {
+		for (int i = 0; i < monPanier_->obtenirNombreContenu; i++) {
+			cout << "Article numero " << (i + 1) << " : " << monPanier_->obtenirContenuPanier[i]->obtenirNom << " reference: " << monPanier_->obtenirContenuPanier[i]->obtenirReference << " prix: " << monPanier_->obtenirContenuPanier[i]->obtenirPrix << endl;
+		}
+	}
+}

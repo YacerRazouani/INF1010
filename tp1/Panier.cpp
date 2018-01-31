@@ -29,6 +29,8 @@ Panier::Panier(int capacite)
 Panier::~Panier()
 {
     // Destructeur d'un panier
+	delete[] contenuPanier_;
+	cout << "Le panier a ete detruit" << endl;
 }
 
 /****************************************************************************
@@ -82,15 +84,17 @@ void Panier::ajouter(Produit * prod)
 		contenuPanier_[i] = prod;
 	}
 	
-	else {															
+	else {
+		if (capaciteContenu_ == 0) {
+			capaciteContenu_ = 1;
+		}
 		int capaciteNouveauTableau = capaciteContenu_ * 2;
 		Produit** nouveauTableau = new Produit*[capaciteContenu_];
 		for (int i = 0; i < capaciteContenu_; i++) {
 			nouveauTableau[i] = contenuPanier_[i];
-			delete[] contenuPanier_[i];
 		}
 		delete[] contenuPanier_;
-		capaciteContenu_ += 5;
+		capaciteContenu_ *= 2;
 		contenuPanier_ = nouveauTableau;
 		while (contenuPanier_[i] != nullptr) {
 			i++;
@@ -111,11 +115,14 @@ void Panier::ajouter(Produit * prod)
 
 void Panier::livrer()
 {
-	for (int i = 0; i < capaciteContenu_; i++) {
-		delete[] contenuPanier_[i];
-	}
 
-	delete[] contenuPanier_;
+	for (int i = 0; i < nombreContenu_; i++) {
+		contenuPanier_[i] = nullptr;
+		
+	}
+	nombreContenu_ = 0;
+	capaciteContenu_ = 0;
+	totalAPayer_ = 0.0;
 }
 
 /****************************************************************************
@@ -132,7 +139,7 @@ void Panier::afficher() const
 		cout << "vide" << endl;
 	}
 	else {
-		for (int i = 0; i < capaciteContenu_; i++) {
+		for (int i = 0; i < nombreContenu_; i++) {
 			cout << "Article numero " << (i + 1) << " " << contenuPanier_[i]->obtenirNom << " reference: " << contenuPanier_[i]->obtenirReference << " prix: " << contenuPanier_[i]->obtenirPrix << endl;
 		}
 	}

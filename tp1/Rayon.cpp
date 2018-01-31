@@ -15,7 +15,7 @@
  * ParamËtres: (string) categorie
  * Retour: aucun
  ****************************************************************************/
-Rayon::Rayon(string categorie = "inconnu", Produit ** tousProduits = nullptr, int capaciteProduits = 0, int nombreProduits = 0)
+Rayon::Rayon(string categorie, Produit ** tousProduits, int capaciteProduits, int nombreProduits)
 {
     // Constructeur
     categorie_ = categorie;
@@ -35,6 +35,7 @@ Rayon::Rayon(string categorie = "inconnu", Produit ** tousProduits = nullptr, in
 Rayon::~Rayon()
 {
     // Destructeur d'un rayon
+	cout << "Le rayon a ete detruit" << endl;
 }
 
 /****************************************************************************
@@ -124,7 +125,6 @@ void Rayon::ajouterProduit(Produit * produit)
 			Produit** nouveauTableau = new Produit*[capaciteProduits_];
 			for (int i = 0; i < capaciteProduits_; i++){
 				nouveauTableau[i] = tousProduits_[i];
-				delete[] tousProduits_[i];
 			}
 			delete[] tousProduits_;
 			capaciteProduits_ += 5;
