@@ -13,16 +13,30 @@
 
 using namespace std;
 
+//Q1: composition
+//Q2: aggregation
+
 int main()
 {
     //C'est à vous de voir si vous devez allouer dynamiquement ou non les élèments
     
     //1-  Creez 15 objets du classe produit
 
-    static const int NOMBRE_PRODUITS = 15;
-    for (unsigned i = 0; i < NOMBRE_PRODUITS; i++){
-        Produit *p[i] = new Produit();
-    }
+	Produit chaussures("Balenciaga", 1, 850);
+	Produit prada("Prada", 2, 2140.0);
+	Produit p3();
+	Produit p4();
+	Produit p5();
+	Produit p6();
+	Produit p7();
+	Produit p8();
+	Produit p9();
+	Produit p10();
+	Produit p11();
+	Produit p12();
+	Produit p13();
+	Produit p14();
+	Produit p15();
     
     //2-  Modifiez le nom, la référence, le prix de  troisieme objet Produit créé
     //   afficher les attributs de cet objet Produit
@@ -69,7 +83,7 @@ int main()
     //12- afficher le contenu du panier du client
     client.afficherPanier();
     //13-  terminer le programme correctement
-    // AJOUTER LES DELETES
+    // AJOUTER LES DELETE
     
  
     return 0;

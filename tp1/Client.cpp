@@ -179,24 +179,18 @@ void Client::livrerPanier()
 void Client::acheter(Produit * produit)
 {
     if (monPanier_ == nullptr){								//Si le tableau est nul on crée un objet Panier de 4 produit
-        monPanier_ 4;
-        monPanier.contenuPanier_ = new Produit*[capaciteContenu_];
-        monPanier.contenuPanier_[0] = produit;
+        Panier panier(4);
+		monPanier_ = &panier;
+		monPanier_->ajouter(produit);
     }
+
     else {
         int i = 0;												// On parcourt le tableau tant qu'on ne trouve pas une case vide.
-        while (monPanier_[i] != nullptr) {					// Remarque: j'utilise un while et non une boucle for car ca me permet
+        while (monPanier_->obtenirContenuPanier[i] != nullptr) {					// Remarque: j'utilise un while et non une boucle for car ca me permet
             i++;												// de sauvegarder la valeur de i (la position dans le tableau).
         }
-        if (monPanier_[i] == nullptr && i < panier.capaciteContenu_) { //Si je trouve une case vide, je rajoute le produit.
-            monPanier.contenuPanier_[i] = produit;
-        }
-        else {													//Sinon je rajoute 4 cases vides. Puis je rajoute le produit.
-            for (int j = i; j = i + 4; j++) {
-                monPanier_[j] = new panier.Produit;
-            }
-            capaciteContenu_ += 5;
-            monPanier.contenuPanier_[(i + 1)] = produit;
+		if (monPanier_->obtenirContenuPanier[i] == nullptr) { //Si je trouve une case vide, je rajoute le produit.
+			monPanier_->ajouter(produit);
         }
     }
 }

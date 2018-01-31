@@ -19,6 +19,13 @@ Panier::Panier(int capacite)
 	nombreContenu_ = 0;
 	capaciteContenu_ = capacite;
 	totalAPayer_ = 0.0;
+
+	//Allocation de l'espace memoire
+	if (capacite > 0) {
+		contenuPanier_ = new Produit*[capacite];
+	}
+	
+
 }
 /****************************************************************************
  * Fonction: Panier::~Panier()
@@ -30,6 +37,7 @@ Panier::~Panier()
 {
     // Destructeur d'un panier
 	delete[] contenuPanier_;
+	contenuPanier_ = nullptr;
 	cout << "Le panier a ete detruit" << endl;
 }
 
