@@ -163,19 +163,8 @@ void Client::modifierDateNaissance (long dateNaissance)
 
 void Client::livrerPanier()
 {
-    for (int i = 0; i < monPanier.capaciteContenu_; i++) {
-        delete[] monPanier.contenuPanier_[i];
-    }
-    
-    delete[] monPanier.contenuPanier_;
-
-
-
-
 
 	monPanier_->livrer();
-
-
 
 }
 
