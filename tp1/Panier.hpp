@@ -19,7 +19,7 @@ public:
     // Constructeur
     Panier (int capacite);
     // Destructeur
-    ~Produit();
+    ~Panier();
     // methodes d'accès
     Produit **  obtenirContenuPanier() const;
     int obtenirNombreContenu() const;

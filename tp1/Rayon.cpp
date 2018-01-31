@@ -15,7 +15,7 @@
  * ParamËtres: (string) categorie
  * Retour: aucun
  ****************************************************************************/
-Rayon::Rayon(string categorie)
+Rayon::Rayon(string categorie = "inconnu", Produit ** tousProduits = nullptr, int capaciteProduits = 0, int nombreProduits = 0)
 {
     // Constructeur
     categorie_ = categorie;
@@ -104,25 +104,32 @@ void Rayon::modifierCategorie (string categorie)
 
 void Rayon::ajouterProduit(Produit * produit)
 {
-    if (tousProduits_ == nullptr){								//Si le tableau est nul on rajoute 5 cases.
+    if (tousProduits_ == nullptr){											//Si le tableau est nul on rajoute 5 cases.
 		capaciteProduits_ = 5;
 		tousProduits_ = new Produit*[capaciteProduits_];
 		tousProduits_[0] = produit;
     }
+
 	else {
-		int i = 0;												// On parcourt le tableau tant qu'on ne trouve pas une case vide. 
-		while (tousProduits_[i] != nullptr) {					// Remarque: j'utilise un while et non une boucle for car ca me permet
-			i++;												// de sauvegarder la valeur de i (la position dans le tableau).
+		int i = 0;															// On parcourt le tableau tant qu'on ne trouve pas une case vide. 
+		while (tousProduits_[i] != nullptr) {								// Remarque: j'utilise un while et non une boucle for car ca me permet
+			i++;															// de sauvegarder la valeur de i (la position dans le tableau).
 		}
-		if (tousProduits_[i] == nullptr && i < capaciteProduits_) { //Si je trouve une case vide, je rajoute le produit.
+		if (tousProduits_[i] == nullptr && i < capaciteProduits_) {			//Si je trouve une case vide, je rajoute le produit.
 			tousProduits_[i] = produit;
 		}
-		else {													//Sinon je rajoute 5 cases vides. Puis je rajoute le produit.
-			for (int j = i; j = i + 5; j++) {
-				tousProduits_[j] = new Produit;
+		
+		else {																//Sinon je rajoute 5 cases vides. Puis je rajoute le produit.
+			int capaciteNouveauTableau = capaciteProduits_ + 5;
+			Produit** nouveauTableau = new Produit*[capaciteProduits_];
+			for (int i = 0; i < capaciteProduits_; i++){
+				nouveauTableau[i] = tousProduits_[i];
+				delete[] tousProduits_[i];
 			}
+			delete[] tousProduits_;
 			capaciteProduits_ += 5;
-			tousProduits_[(i + 1)] = produit;
+			tousProduits_ = nouveauTableau;
+			tousProduits_[(capaciteProduits_ - 6)] = produit;
 		}
 	}
 }

@@ -31,7 +31,6 @@ Panier::~Panier()
     // Destructeur d'un panier
 }
 
-/
 /****************************************************************************
  * Fonction: Panier::obtenirContenuPanier()
  * Description: retourne contenuPanier_
@@ -82,12 +81,23 @@ void Panier::ajouter(Produit * prod)
 	if (contenuPanier_[i] == nullptr && i < capaciteContenu_) {
 		contenuPanier_[i] = prod;
 	}
-	else {
-		for (int j = (capaciteContenu_ - 1); j < (capaciteContenu_ * 2); j++) {
-			contenuPanier_[j] = new Produit;
+	
+	else {															
+		int capaciteNouveauTableau = capaciteContenu_ * 2;
+		Produit** nouveauTableau = new Produit*[capaciteContenu_];
+		for (int i = 0; i < capaciteContenu_; i++) {
+			nouveauTableau[i] = contenuPanier_[i];
+			delete[] contenuPanier_[i];
 		}
-		capaciteContenu_ *= 2;
-		contenuPanier_[(i + 1)] = prod;
+		delete[] contenuPanier_;
+		capaciteContenu_ += 5;
+		contenuPanier_ = nouveauTableau;
+		while (contenuPanier_[i] != nullptr) {
+			i++;
+		}
+		if (contenuPanier_[i] == nullptr && i < capaciteContenu_) {
+			contenuPanier_[i] = prod;
+		}
 	}
 	totalAPayer_ += prod->obtenirPrix;
 }

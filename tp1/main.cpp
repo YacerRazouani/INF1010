@@ -64,7 +64,7 @@ int main()
     
     client.afficherPanier();
     //11- livrer le panier du client
-    client.livrer ();
+    client.livrerPanier();
     
     //12- afficher le contenu du panier du client
     client.afficherPanier();
