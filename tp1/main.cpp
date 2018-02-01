@@ -21,47 +21,33 @@ int main()
     //C'est à vous de voir si vous devez allouer dynamiquement ou non les élèments
     
     //1-  Creez 15 objets du classe produit
-
-	Produit chaussures("Balenciaga", 1, 850);
-	Produit prada("Prada", 2, 2140.0);
-	Produit p3();
-	Produit p4();
-	Produit p5();
-	Produit p6();
-	Produit p7();
-	Produit p8();
-	Produit p9();
-	Produit p10();
-	Produit p11();
-	Produit p12();
-	Produit p13();
-	Produit p14();
-	Produit p15();
+    static const int NOMBRE_DE_PRODUITS = 15;
+    Produit *listeProduits[NOMBRE_DE_PRODUITS];
+    for (int i = 0; i < NOMBRE_DE_PRODUITS; i++){
+        listeProduits[i] = new Produit();
+    }
     
     //2-  Modifiez le nom, la référence, le prix de  troisieme objet Produit créé
     //   afficher les attributs de cet objet Produit
-    p3->modifierNom("Jus d'organges");
-    p3->modifierReference(1);
-    p3->modifierPrix(3.00);
-    p3->afficher();
+    listeProduits[2]->modifierNom("banane");
+    listeProduits[2]->modifierReference(4);
+    listeProduits[2]->modifierPrix(2.00);
    
     
     //3-  Creez un objet du classe rayon à l'aide du constructeur par défaut
-    Rayon *rayon = new Rayon();
+    Rayon rayon = Rayon();
     
     //4-  Modifiez la catégorie  du rayon
-    rayon->modifierCategorie("Produits Laitiers");
-    
+    rayon.modifierCategorie("Produits Laitiers");
     
     // 5- Ajouter 6 produits de  voret chaoix dans le rayon créé
-    static const int NOMBRE_PRODUITS_AJOUTER = 6
-    for (unsigned i = 0; i < NOMBRE_PRODUITS_AJOUTER; i++){
-        rayon->ajouterProduit(p[i]);
+    static const int NOMBRE_DE_PRODUITS_AJOUTES = 6;
+    for (int i = 0; i < NOMBRE_DE_PRODUITS_AJOUTES; i++){
+            rayon.ajouterProduit(listeProduits[i]);
     }
     
     // 6- afficher le contenu du rayon
-    rayon->afficher();
-    
+    rayon.afficher();
     
     //7-  Creez un objet de classe client à l'aide du constructeur
     Client client = Client();
@@ -70,21 +56,22 @@ int main()
     client.afficherAttributs();
     
     //9-   Le client achete 9 produits
-    static const int NOMBRE_PRODUITS_ACHETER = 9;
-    for (unsigned i = 0; i < NOMBRE_PRODUITS_ACHETER; i++){
-        client.acheter(p[i]);
+    static const int NOMBRE_DE_PRODUITS_ACHETES = 9;
+    for (int i = 0; i < NOMBRE_DE_PRODUITS_ACHETES; i++){
+        client.acheter(listeProduits[i]);
     }
     //10- Afficher le contenu du panier du client
-    
     client.afficherPanier();
+    
     //11- livrer le panier du client
     client.livrerPanier();
     
     //12- afficher le contenu du panier du client
     client.afficherPanier();
+    
     //13-  terminer le programme correctement
     // AJOUTER LES DELETE
     
- 
+    
     return 0;
 }

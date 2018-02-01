@@ -153,21 +153,24 @@ void Client::modifierDateNaissance (long dateNaissance)
 {
     dateNaissance_ = dateNaissance;
 }
-
 /****************************************************************************
- * Fonction:   Client::livrer()
- * Description:  Permet de livrer le contenu du panier, en supprimant le Panier actuel du client.
+ * Fonction:   Clier::afficherAttributs()
+ * Description: Affiche l'état des attributs
  * ParamËtres: aucun
- * Retour: aucun
+ * Retour:
  ****************************************************************************/
 
-void Client::livrerPanier()
+void Client::afficherAttributs() const
 {
-
-	monPanier_->livrer();
-
+    cout << "Le nom du client est : " << nom_ << endl;
+    cout << "Le prénom du client est : " << prenom_ << endl;
+    cout << "L'identifiant du client est : " << identifiant_ << endl;
+    cout << "Le code postal du client est : " << codePostal_ << endl;
+    cout << "La date de naissance du client est : " << dateNaissance_ << endl;
+    cout << "Le contenu du panier est : " << endl;
+    afficherPanier();
 }
-
+    
 /****************************************************************************
  * Fonction:   Client::acheter()
  * Description: Ajoute un produit dans le panier du client. Si le panier n’existe pas, on créé un objet Panier de 4 produits, et on ajoute le produit dans le Panier du client
@@ -214,4 +217,17 @@ void Client::afficherPanier() const
 			cout << "Article numero " << (i + 1) << " : " << monPanier_->obtenirContenuPanier[i]->obtenirNom << " reference: " << monPanier_->obtenirContenuPanier[i]->obtenirReference << " prix: " << monPanier_->obtenirContenuPanier[i]->obtenirPrix << endl;
 		}
 	}
+}
+    
+/****************************************************************************
+* Fonction:   Client::livrer()
+* Description:  Permet de livrer le contenu du panier, en supprimant le Panier actuel du client.
+* ParamËtres: aucun
+* Retour: aucun****************************************************************************/
+    
+void Client::livrerPanier()
+{
+        
+    monPanier_->livrer();
+        
 }

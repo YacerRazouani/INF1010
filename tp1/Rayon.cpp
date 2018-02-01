@@ -153,7 +153,7 @@ void Rayon::afficher() const
     }
     else {
         for (int i = 0; i < capaciteProduits_; i++) {
-            cout << "Article numero " << (i + 1) << " " << tousProduits_[i]->obtenirNom << " reference: " << tousProduits_[i]->obtenirReference << " prix: " << tousProduis_[i]->obtenirPrix << endl;
+            cout << "Article numero " << (i + 1) << " " << tousProduits_[i]->obtenirNom() << " reference: " << tousProduits_[i]->obtenirReference() << " prix: " << tousProduits_[i]->obtenirPrix() << endl;
         }
     }
 

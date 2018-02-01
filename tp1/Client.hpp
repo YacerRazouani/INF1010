@@ -37,6 +37,7 @@ public:
     void modifierDateNaissance(long date);
     
     // autres méthodes
+    void afficherAttributs() const;
     void acheter (Produit * produit);
     void afficherPanier() const;
     void livrerPanier();
