@@ -21,10 +21,10 @@ int main()
     //C'est à vous de voir si vous devez allouer dynamiquement ou non les élèments
     
     //1-  Creez 15 objets du classe produit
-    static const int NOMBRE_DE_PRODUITS = 15;
-    Produit *listeProduits[NOMBRE_DE_PRODUITS];
+    const int NOMBRE_DE_PRODUITS = 15;
+    Produit** listeProduits = new Produit*[NOMBRE_DE_PRODUITS];
     for (int i = 0; i < NOMBRE_DE_PRODUITS; i++){
-        listeProduits[i] = new Produit();
+        listeProduits[i] = new Produit;
     }
     
     //2-  Modifiez le nom, la référence, le prix de  troisieme objet Produit créé
@@ -35,13 +35,13 @@ int main()
    
     
     //3-  Creez un objet du classe rayon à l'aide du constructeur par défaut
-    Rayon rayon = Rayon();
+    Rayon rayon;
     
     //4-  Modifiez la catégorie  du rayon
     rayon.modifierCategorie("Produits Laitiers");
     
     // 5- Ajouter 6 produits de  voret chaoix dans le rayon créé
-    static const int NOMBRE_DE_PRODUITS_AJOUTES = 6;
+    const int NOMBRE_DE_PRODUITS_AJOUTES = 6;
     for (int i = 0; i < NOMBRE_DE_PRODUITS_AJOUTES; i++){
             rayon.ajouterProduit(listeProduits[i]);
     }
@@ -50,7 +50,7 @@ int main()
     rayon.afficher();
     
     //7-  Creez un objet de classe client à l'aide du constructeur
-    Client client = Client();
+    Client client = Client("Chan", "Jackie", 5, "HT6P0P", 1998);
     
     //8-  afficher l'etat des attributs du client
     client.afficherAttributs();

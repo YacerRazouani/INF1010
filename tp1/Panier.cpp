@@ -59,7 +59,7 @@ Produit** Panier::obtenirContenuPanier() const
  * Retour: int
  ****************************************************************************/
 int Panier::obtenirNombreContenu() const
-{
+{
     return nombreContenu_;
 }
 
@@ -111,7 +111,7 @@ void Panier::ajouter(Produit * prod)
 			contenuPanier_[i] = prod;
 		}
 	}
-	totalAPayer_ += prod->obtenirPrix;
+	totalAPayer_ = totalAPayer_ + prod->obtenirPrix();
 }
 
 /****************************************************************************
@@ -148,7 +148,7 @@ void Panier::afficher() const
 	}
 	else {
 		for (int i = 0; i < nombreContenu_; i++) {
-			cout << "Article numero " << (i + 1) << " " << contenuPanier_[i]->obtenirNom << " reference: " << contenuPanier_[i]->obtenirReference << " prix: " << contenuPanier_[i]->obtenirPrix << endl;
+			cout << "Article numero " << (i + 1) << " " << contenuPanier_[i]->obtenirNom() << " reference: " << contenuPanier_[i]->obtenirReference() << " prix: " << contenuPanier_[i]->obtenirPrix() << endl;
 		}
 	}
 	cout << "Le nombre de contenu dans le panier est de : " << nombreContenu_ << endl;

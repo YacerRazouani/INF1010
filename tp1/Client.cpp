@@ -36,7 +36,7 @@ Client::Client(string nom , string prenom, int identifiant, string codePostal, l
 Client::~Client()
 {
     // Destructeur d'un client
-    monPanier_->livrerPanier();
+    monPanier_->livrer();
     cout << "Le panier du client a ete detruit." << endl; 
 }
 
@@ -47,7 +47,7 @@ Client::~Client()
  * Retour: (string) la valeur de nom_
  ****************************************************************************/
 string Client::obtenirNom() const
-{
+{
     return nom_;
 }
 
@@ -183,21 +183,16 @@ void Client::afficherAttributs() const
 
 void Client::acheter(Produit * produit)
 {
-    if (monPanier_ == nullptr){								//Si le tableau est nul on crée un objet Panier de 4 produit
+    if (monPanier_ == nullptr){														//Si le tableau est nul on crée un objet Panier de 4 produit
         Panier panier(4);
 		monPanier_ = &panier;
 		monPanier_->ajouter(produit);
     }
 
-    else {
-        int i = 0;												// On parcourt le tableau tant qu'on ne trouve pas une case vide.
-        while (monPanier_->obtenirContenuPanier[i] != nullptr) {					// Remarque: j'utilise un while et non une boucle for car ca me permet
-            i++;												// de sauvegarder la valeur de i (la position dans le tableau).
-        }
-		if (monPanier_->obtenirContenuPanier[i] == nullptr) { //Si je trouve une case vide, je rajoute le produit.
-			monPanier_->ajouter(produit);
-        }
-    }
+	else {
+		monPanier_->ajouter(produit);
+	}
+
 }
 
 
@@ -211,13 +206,11 @@ void Client::acheter(Produit * produit)
 void Client::afficherPanier() const
 {
 	cout << "Le contenu du panier est : ";
-	if (monPanier_->obtenirContenuPanier[0] == nullptr) {
+	if (monPanier_->obtenirContenuPanier() == nullptr) {
 		cout << "vide" << endl;
 	}
 	else {
-		for (int i = 0; i < monPanier_->obtenirNombreContenu; i++) {
-			cout << "Article numero " << (i + 1) << " : " << monPanier_->obtenirContenuPanier[i]->obtenirNom << " reference: " << monPanier_->obtenirContenuPanier[i]->obtenirReference << " prix: " << monPanier_->obtenirContenuPanier[i]->obtenirPrix << endl;
-		}
+		monPanier_->afficher();
 	}
 }
     

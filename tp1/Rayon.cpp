@@ -109,15 +109,17 @@ void Rayon::ajouterProduit(Produit * produit)
 		capaciteProduits_ = 5;
 		tousProduits_ = new Produit*[capaciteProduits_];
 		tousProduits_[0] = produit;
+		nombreProduits_++;
     }
 
 	else {
 		int i = 0;															// On parcourt le tableau tant qu'on ne trouve pas une case vide. 
-		while (tousProduits_[i] != nullptr) {								// Remarque: j'utilise un while et non une boucle for car ca me permet
+		while (tousProduits_[i] != 0) {							        	// Remarque: j'utilise un while et non une boucle for car ca me permet
 			i++;															// de sauvegarder la valeur de i (la position dans le tableau).
 		}
-		if (tousProduits_[i] == nullptr && i < capaciteProduits_) {			//Si je trouve une case vide, je rajoute le produit.
+		if (tousProduits_[i] == nullptr && i < nombreProduits_) {			//Si je trouve une case vide, je rajoute le produit.
 			tousProduits_[i] = produit;
+			nombreProduits_++;
 		}
 		
 		else {																//Sinon je rajoute 5 cases vides. Puis je rajoute le produit.
@@ -130,6 +132,7 @@ void Rayon::ajouterProduit(Produit * produit)
 			capaciteProduits_ += 5;
 			tousProduits_ = nouveauTableau;
 			tousProduits_[(capaciteProduits_ - 6)] = produit;
+			nombreProduits_++;
 		}
 	}
 }
@@ -152,11 +155,11 @@ void Rayon::afficher() const
         cout << "vide" << endl;
     }
     else {
-        for (int i = 0; i < capaciteProduits_; i++) {
+        for (int i = 0; i < nombreProduits_; i++) {
             cout << "Article numero " << (i + 1) << " " << tousProduits_[i]->obtenirNom() << " reference: " << tousProduits_[i]->obtenirReference() << " prix: " << tousProduits_[i]->obtenirPrix() << endl;
         }
     }
-
+	cout << endl;
     // A COMPLETER;
 
 }

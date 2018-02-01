@@ -42,7 +42,7 @@ Produit::~Produit()
  * Retour: (string) la valeur de nom_
  ****************************************************************************/
 string Produit::obtenirNom() const
-{
+{
     return nom_;
 }
 
