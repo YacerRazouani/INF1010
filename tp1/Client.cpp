@@ -36,6 +36,8 @@ Client::Client(string nom , string prenom, int identifiant, string codePostal, l
 Client::~Client()
 {
     // Destructeur d'un client
+    monPanier_->livrerPanier();
+    cout << "Le panier du client a ete detruit." << endl; 
 }
 
 /****************************************************************************
