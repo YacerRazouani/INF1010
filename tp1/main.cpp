@@ -47,7 +47,7 @@ int main()
     }
 
     // 6- afficher le contenu du rayon
-    rayon.afficher();
+   // rayon.afficher();
     
     //7-  Creez un objet de classe client à l'aide du constructeur
     Client client = Client("Chan", "Jackie", 5, "HT6P0P", 1998);

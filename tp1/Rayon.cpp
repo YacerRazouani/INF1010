@@ -115,7 +115,7 @@ void Rayon::ajouterProduit(Produit * produit)
 	
 	else if (tousProduits_ != nullptr && nombreProduits_ == capaciteProduits_) {
 		int capaciteNouveauTableau = capaciteProduits_ + 5;
-		Produit** nouveauTableau = new Produit*[capaciteProduits_];
+		Produit** nouveauTableau = new Produit*[capaciteNouveauTableau];
 		for (int i = 0; i < capaciteProduits_; i++) {
 			nouveauTableau[i] = tousProduits_[i];
 		}
