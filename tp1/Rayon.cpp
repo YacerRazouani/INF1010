@@ -105,36 +105,33 @@ void Rayon::modifierCategorie (string categorie)
 
 void Rayon::ajouterProduit(Produit * produit)
 {
-    if (tousProduits_ == nullptr){											//Si le tableau est nul on rajoute 5 cases.
-		capaciteProduits_ = 5;
-		tousProduits_ = new Produit*[capaciteProduits_];
-		tousProduits_[0] = produit;
-		nombreProduits_++;
-    }
 
-	else {
-		int i = 0;															// On parcourt le tableau tant qu'on ne trouve pas une case vide. 
-		while (tousProduits_[i] != 0) {							        	// Remarque: j'utilise un while et non une boucle for car ca me permet
-			i++;															// de sauvegarder la valeur de i (la position dans le tableau).
-		}
-		if (tousProduits_[i] == nullptr && i < nombreProduits_) {			//Si je trouve une case vide, je rajoute le produit.
-			tousProduits_[i] = produit;
-			nombreProduits_++;
-		}
-		
-		else {																//Sinon je rajoute 5 cases vides. Puis je rajoute le produit.
-			int capaciteNouveauTableau = capaciteProduits_ + 5;
-			Produit** nouveauTableau = new Produit*[capaciteProduits_];
-			for (int i = 0; i < capaciteProduits_; i++){
-				nouveauTableau[i] = tousProduits_[i];
-			}
-			delete[] tousProduits_;
-			capaciteProduits_ += 5;
-			tousProduits_ = nouveauTableau;
-			tousProduits_[(capaciteProduits_ - 6)] = produit;
-			nombreProduits_++;
-		}
+	if (tousProduits_ == nullptr){											
+		capaciteProduits_ = 5;
+		tousProduits_ = new Produit* [capaciteProduits_];
+		nombreProduits_++;
+		tousProduits_[(nombreProduits_ - 1)] = produit;
 	}
+	
+	else if (tousProduits_ != nullptr && nombreProduits_ == capaciteProduits_) {
+		int capaciteNouveauTableau = capaciteProduits_ + 5;
+		Produit** nouveauTableau = new Produit*[capaciteProduits_];
+		for (int i = 0; i < capaciteProduits_; i++) {
+			nouveauTableau[i] = tousProduits_[i];
+		}
+		delete[] tousProduits_;
+		capaciteProduits_ += 5;
+		tousProduits_ = nouveauTableau;
+		nombreProduits_++;
+		tousProduits_[nombreProduits_] = produit;
+	}
+
+	else if (tousProduits_ != nullptr) {
+		nombreProduits_++;
+		tousProduits_[(nombreProduits_ - 1)] = produit;
+	}
+
+	
 }
 
 /****************************************************************************
@@ -148,18 +145,15 @@ void Rayon::afficher() const
 {
     cout << "La categorie du rayon est : " << categorie_ << endl;
     cout << "Le nombre de produits du rayon est : " << nombreProduits_ << endl;
-    cout << "La capacité du rayon est : " << capaciteProduits_ << endl;
+    cout << "La capacite du rayon est : " << capaciteProduits_ << endl;
     
-    cout << "Le contenu du rayon est : ";
-    if (tousProduits_[0] == nullptr) {
-        cout << "vide" << endl;
-    }
-    else {
-        for (int i = 0; i < nombreProduits_; i++) {
-            cout << "Article numero " << (i + 1) << " " << tousProduits_[i]->obtenirNom() << " reference: " << tousProduits_[i]->obtenirReference() << " prix: " << tousProduits_[i]->obtenirPrix() << endl;
-        }
-    }
-	cout << endl;
+	cout << "Le contenu du rayon est : " << endl;
+
+	for (int i = 0; i < nombreProduits_; i++) {
+		tousProduits_[i]->afficher();
+	}
+      
+
     // A COMPLETER;
 
 }

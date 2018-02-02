@@ -43,9 +43,9 @@ int main()
     // 5- Ajouter 6 produits de  voret chaoix dans le rayon créé
     const int NOMBRE_DE_PRODUITS_AJOUTES = 6;
     for (int i = 0; i < NOMBRE_DE_PRODUITS_AJOUTES; i++){
-            rayon.ajouterProduit(listeProduits[i]);
+		rayon.ajouterProduit(listeProduits[i]);
     }
-    
+
     // 6- afficher le contenu du rayon
     rayon.afficher();
     
@@ -56,10 +56,11 @@ int main()
     client.afficherAttributs();
     
     //9-   Le client achete 9 produits
-    static const int NOMBRE_DE_PRODUITS_ACHETES = 9;
+    const int NOMBRE_DE_PRODUITS_ACHETES = 9;
     for (int i = 0; i < NOMBRE_DE_PRODUITS_ACHETES; i++){
         client.acheter(listeProduits[i]);
     }
+
     //10- Afficher le contenu du panier du client
     client.afficherPanier();
     

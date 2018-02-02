@@ -115,7 +115,7 @@ void Produit::modifierPrix(double prix)
 
 void Produit::afficher() const
 {
-    cout << "Le nom du produit est : " << nom_ << endl;
-    cout << "La reference du produit est : " << reference_ << endl;
-    cout << "Le prix du produit est : "<< prix_ << endl;
+    cout << "Le nom du produit est : " << obtenirNom() << endl;
+    cout << "La reference du produit est : " << obtenirReference() << endl;
+    cout << "Le prix du produit est : "<< obtenirPrix() << endl;
 }
