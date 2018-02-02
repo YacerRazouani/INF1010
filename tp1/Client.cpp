@@ -37,6 +37,9 @@ Client::~Client()
 {
     // Destructeur d'un client
     //monPanier_->~Panier(); JE NE SUIS PAS SUR SI IL FAUT DETRUIRE LE PANIER DU CLIENT!!!!!!!!!!!!!!!!!!!!!!!!!
+	if (monPanier_->obtenirContenuPanier() == 0) {
+		delete[] monPanier_;
+	}
     cout << "Le panier du client a ete detruit." << endl; 
 }
 
@@ -165,7 +168,7 @@ void Client::modifierDateNaissance (long dateNaissance)
 void Client::afficherAttributs() const
 {
     cout << "Le nom du client est : " << obtenirNom() << endl;
-    cout << "Le prénom du client est : " << obtenirPrenom() << endl;
+    cout << "Le prenom du client est : " << obtenirPrenom() << endl;
     cout << "L'identifiant du client est : " << obtenirIdentifiant() << endl;
     cout << "Le code postal du client est : " << obtenirCodePostal() << endl;
     cout << "La date de naissance du client est : " << obtenirDateNaissance() << endl;
@@ -202,13 +205,7 @@ void Client::acheter(Produit * produit)
 
 void Client::afficherPanier() const
 {
-	cout << "Le contenu du panier est : ";
-	if (monPanier_->obtenirContenuPanier() == nullptr) {
-		cout << "vide" << endl;
-	}
-	else {
-		monPanier_->afficher();
-	}
+	monPanier_->afficher();
 }
     
 /****************************************************************************

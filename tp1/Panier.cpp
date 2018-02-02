@@ -84,34 +84,44 @@ double Panier::obtenirTotalApayer() const
 
 void Panier::ajouter(Produit * prod)
 {
-	int i = 0;												
-	while (contenuPanier_[i] != nullptr) {
-		i++;												
-	}
-	if (contenuPanier_[i] == nullptr && i < capaciteContenu_) {
-		contenuPanier_[i] = prod;
-	}
-	
-	else {
-		if (capaciteContenu_ == 0) {
-			capaciteContenu_ = 1;
-		}
+	if (nombreContenu_ == capaciteContenu_) {
 		int capaciteNouveauTableau = capaciteContenu_ * 2;
-		Produit** nouveauTableau = new Produit*[capaciteContenu_];
-		for (int i = 0; i < capaciteContenu_; i++) {
+		Produit** nouveauTableau = new Produit*[capaciteNouveauTableau];
+		for (int i = 0; i < nombreContenu_; i++) {
 			nouveauTableau[i] = contenuPanier_[i];
 		}
 		delete[] contenuPanier_;
-		capaciteContenu_ *= 2;
+		capaciteContenu_ = capaciteNouveauTableau;
 		contenuPanier_ = nouveauTableau;
-		while (contenuPanier_[i] != nullptr) {
-			i++;
-		}
-		if (contenuPanier_[i] == nullptr && i < capaciteContenu_) {
-			contenuPanier_[i] = prod;
-		}
+		contenuPanier_[nombreContenu_++] = prod;
 	}
+
+	else {
+		contenuPanier_[nombreContenu_++] = prod;
+	}
+
 	totalAPayer_ = totalAPayer_ + prod->obtenirPrix();
+
+	//else {
+	//	if (capaciteContenu_ == 0) {
+	//		capaciteContenu_ = 1;
+	//	}
+	//	int capaciteNouveauTableau = capaciteContenu_ * 2;
+	//	Produit** nouveauTableau = new Produit*[capaciteContenu_];
+	//	for (int i = 0; i < capaciteContenu_; i++) {
+	//		nouveauTableau[i] = contenuPanier_[i];
+	//	}
+	//	delete[] contenuPanier_;
+	//	capaciteContenu_ *= 2;
+	//	contenuPanier_ = nouveauTableau;
+	//	while (contenuPanier_[i] != nullptr) {
+	//		i++;
+	//	}
+	//	if (contenuPanier_[i] == nullptr && i < capaciteContenu_) {
+	//		contenuPanier_[i] = prod;
+	//	}
+	//}
+	//totalAPayer_ = totalAPayer_ + prod->obtenirPrix();
 }
 
 /****************************************************************************
@@ -142,15 +152,11 @@ void Panier::livrer()
 
 void Panier::afficher() const
 {
-	cout << "Le contenu du panier est : ";
-	if (contenuPanier_[0] == nullptr) {
-		cout << "vide" << endl;
+	cout << "Le contenu du panier est : " << endl;
+	for (int i = 0; i < nombreContenu_; i++) {
+		cout << "Article numero " << (i + 1) << " " << contenuPanier_[i]->obtenirNom() << " reference: " << contenuPanier_[i]->obtenirReference() << " prix: " << contenuPanier_[i]->obtenirPrix() << endl;
 	}
-	else {
-		for (int i = 0; i < nombreContenu_; i++) {
-			cout << "Article numero " << (i + 1) << " " << contenuPanier_[i]->obtenirNom() << " reference: " << contenuPanier_[i]->obtenirReference() << " prix: " << contenuPanier_[i]->obtenirPrix() << endl;
-		}
-	}
+	
 	cout << "Le nombre de contenu dans le panier est de : " << nombreContenu_ << endl;
 	cout << "La capacite du panier est de : " << capaciteContenu_ << endl;
 	cout << "Le total a payer est de : " << totalAPayer_ << endl;
