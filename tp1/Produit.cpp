@@ -7,6 +7,7 @@
  ****************************************************************************/
 
 #include "Produit.hpp"
+#include <iomanip>
 
 /****************************************************************************
  * Fonction: Produit::Produit()
@@ -115,7 +116,7 @@ void Produit::modifierPrix(double prix)
 
 void Produit::afficher() const
 {
-    cout << "Le nom du produit est : " << obtenirNom() << endl;
-    cout << "La reference du produit est : " << obtenirReference() << endl;
-    cout << "Le prix du produit est : "<< obtenirPrix() << endl;
+    cout << setw(60) << "-->Le nom du produit est : " << setw(15) << obtenirNom() << endl;
+    cout << setw(66) << "-->La reference du produit est : " << setw(5) << obtenirReference() << endl;
+    cout << setw(61) << "-->Le prix du produit est : "<< setw(10) << obtenirPrix() << endl;
 }

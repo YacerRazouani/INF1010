@@ -8,6 +8,7 @@
 
 #include "Rayon.hpp"
 #include "Produit.hpp"
+#include <iomanip>
 
 /****************************************************************************
  * Fonction: Rayon::Rayon()
@@ -140,16 +141,19 @@ void Rayon::ajouterProduit(Produit * produit)
 
 void Rayon::afficher() const
 {
-    cout << "La categorie du rayon est : " << categorie_ << endl;
-    cout << "Le nombre de produits du rayon est : " << nombreProduits_ << endl;
-    cout << "La capacite du rayon est : " << capaciteProduits_ << endl;
+	
+	cout << setw(120) << setfill('*') << "*" << endl;
+	cout << setw(60) << setfill(' ') << "->La categorie du rayon est : " << categorie_ << "<-" << endl;
+    cout << setw(65) << "- Le nombre de produits du rayon est : " << nombreProduits_ << endl;
+    cout << setw(55) << "- La capacite du rayon est : " << capaciteProduits_ << endl;
     
-	cout << "Le contenu du rayon est : " << endl;
+	cout << setw(54) << "- Le contenu du rayon est : " << endl;
 
 	for (int i = 0; i < nombreProduits_; i++) {
 		tousProduits_[i]->afficher();
 	}
-      
+	cout << setw(120) << setfill('*') << "*" << endl;
+	cout << setfill(' ');
 
     // A COMPLETER;
 

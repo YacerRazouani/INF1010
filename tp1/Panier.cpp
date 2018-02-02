@@ -7,6 +7,8 @@
  ****************************************************************************/
 
 #include "Panier.hpp"
+#include <iomanip>
+
 /****************************************************************************
  * Fonction: Panier::Panier(int capacite)
  * Description: Constructeur par parametre
@@ -152,12 +154,13 @@ void Panier::livrer()
 
 void Panier::afficher() const
 {
-	cout << "Le contenu du panier est : " << endl;
+	cout << setw(120) << setfill('*') << "*" << endl;
+	cout << setw(70) << setfill(' ') << "Le contenu du panier est : " << endl;
 	for (int i = 0; i < nombreContenu_; i++) {
-		cout << "Article numero " << (i + 1) << " " << contenuPanier_[i]->obtenirNom() << " reference: " << contenuPanier_[i]->obtenirReference() << " prix: " << contenuPanier_[i]->obtenirPrix() << endl;
+		cout << setw(42) << "Article numero " << (i + 1) << " :" << endl << setw(50) << " nom: " << setw(12) << contenuPanier_[i]->obtenirNom() << endl << setw(57) << " reference : " << contenuPanier_[i]->obtenirReference() << endl << setw(52) << " prix : " << setw(6) << contenuPanier_[i]->obtenirPrix() << endl;
 	}
 	
 	cout << "Le nombre de contenu dans le panier est de : " << nombreContenu_ << endl;
 	cout << "La capacite du panier est de : " << capaciteContenu_ << endl;
-	cout << "Le total a payer est de : " << totalAPayer_ << endl;
+	cout << "Le total a payer est de : " << setprecision(3) << totalAPayer_ << "$" << endl;
 }

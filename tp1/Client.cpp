@@ -9,6 +9,8 @@
 #include "Client.hpp"
 #include "Produit.hpp"
 #include "Panier.hpp"
+#include <iomanip>
+
 /****************************************************************************
  * Fonction: Client::Client()
  * Description: Fusion des Constructeurs par parametre et par défaut
@@ -167,11 +169,11 @@ void Client::modifierDateNaissance (long dateNaissance)
 
 void Client::afficherAttributs() const
 {
-    cout << "Le nom du client est : " << obtenirNom() << endl;
-    cout << "Le prenom du client est : " << obtenirPrenom() << endl;
-    cout << "L'identifiant du client est : " << obtenirIdentifiant() << endl;
-    cout << "Le code postal du client est : " << obtenirCodePostal() << endl;
-    cout << "La date de naissance du client est : " << obtenirDateNaissance() << endl;
+    cout << setw(51) << "->Le nom du client est : " << setw(23) << obtenirNom() << endl;
+    cout << setw(54) << "->Le prenom du client est : " << setw(22) << obtenirPrenom() << endl;
+    cout << setw(58) << "->L'identifiant du client est : " << setw(13) << obtenirIdentifiant() << endl;
+    cout << setw(59) << "->Le code postal du client est : " << setw(17) << obtenirCodePostal() << endl;
+    cout << setw(65) << "->La date de naissance du client est : " << setw(9) << obtenirDateNaissance() << endl;
 }
     
 /****************************************************************************
