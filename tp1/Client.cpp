@@ -36,7 +36,7 @@ Client::Client(string nom , string prenom, int identifiant, string codePostal, l
 Client::~Client()
 {
     // Destructeur d'un client
-    monPanier_->~Panier();
+    //monPanier_->~Panier(); JE NE SUIS PAS SUR SI IL FAUT DETRUIRE LE PANIER DU CLIENT!!!!!!!!!!!!!!!!!!!!!!!!!
     cout << "Le panier du client a ete detruit." << endl; 
 }
 
@@ -164,11 +164,11 @@ void Client::modifierDateNaissance (long dateNaissance)
 
 void Client::afficherAttributs() const
 {
-    cout << "Le nom du client est : " << nom_ << endl;
-    cout << "Le prénom du client est : " << prenom_ << endl;
-    cout << "L'identifiant du client est : " << identifiant_ << endl;
-    cout << "Le code postal du client est : " << codePostal_ << endl;
-    cout << "La date de naissance du client est : " << dateNaissance_ << endl;
+    cout << "Le nom du client est : " << obtenirNom() << endl;
+    cout << "Le prénom du client est : " << obtenirPrenom() << endl;
+    cout << "L'identifiant du client est : " << obtenirIdentifiant() << endl;
+    cout << "Le code postal du client est : " << obtenirCodePostal() << endl;
+    cout << "La date de naissance du client est : " << obtenirDateNaissance() << endl;
 }
     
 /****************************************************************************
@@ -182,8 +182,7 @@ void Client::afficherAttributs() const
 void Client::acheter(Produit * produit)
 {
     if (monPanier_ == nullptr){														//Si le tableau est nul on crée un objet Panier de 4 produit
-        Panier panier(4);
-		monPanier_ = &panier;
+		monPanier_ = new Panier(4);
 		monPanier_->ajouter(produit);
     }
 

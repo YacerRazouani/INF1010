@@ -26,13 +26,26 @@ int main()
     for (int i = 0; i < NOMBRE_DE_PRODUITS; i++){
         listeProduits[i] = new Produit;
     }
+
+	//Produit p0 = Produit();
+	//Produit p1 = Produit();
+	//Produit p2 = Produit();
+	//Produit p3 = Produit();
+	//Produit p4 = Produit();
+	//Produit p5 = Produit();
+	//Produit p6 = Produit();
+
+
+
     
     //2-  Modifiez le nom, la référence, le prix de  troisieme objet Produit créé
     //   afficher les attributs de cet objet Produit
     listeProduits[2]->modifierNom("banane");
     listeProduits[2]->modifierReference(4);
     listeProduits[2]->modifierPrix(2.00);
-   
+	//p2.modifierNom("banane");
+	//p2.modifierReference(4);
+	//p2.modifierPrix(2.00);
     
     //3-  Creez un objet du classe rayon à l'aide du constructeur par défaut
     Rayon rayon;
@@ -46,8 +59,15 @@ int main()
 		rayon.ajouterProduit(listeProduits[i]);
     }
 
+	//rayon.ajouterProduit(&p0);
+	//rayon.ajouterProduit(&p1);
+	//rayon.ajouterProduit(&p2);
+	//rayon.ajouterProduit(&p3);
+	//rayon.ajouterProduit(&p4);
+	//rayon.ajouterProduit(&p5);
+
     // 6- afficher le contenu du rayon
-   // rayon.afficher();
+    rayon.afficher();
     
     //7-  Creez un objet de classe client à l'aide du constructeur
     Client client = Client("Chan", "Jackie", 5, "HT6P0P", 1998);
