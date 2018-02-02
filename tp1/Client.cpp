@@ -26,7 +26,6 @@ Client::Client(string nom , string prenom, int identifiant, string codePostal, l
     codePostal_ = codePostal;
     dateNaissance_ = dateNaissance;
     monPanier_ = panier;
-    
 }
 
 /****************************************************************************
