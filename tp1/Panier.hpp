@@ -20,14 +20,14 @@ public:
     Panier (int capacite);
     // Destructeur
     ~Panier();
-    // methodes d'accès
+    // methodes d'acces
     Produit **  obtenirContenuPanier() const;
     int obtenirNombreContenu() const;
     double obtenirTotalApayer() const;
     
-    // méthodes de modification
+    // methodes de modification
     
-    // autres méthodes
+    // autres methodes
     void ajouter ( Produit * prod);
     void livrer();
     void afficher() const;

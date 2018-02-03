@@ -36,7 +36,7 @@ public:
     void modifierCodePostal(string codePostal);
     void modifierDateNaissance(long date);
     
-    // autres méthodes
+    // autres methodes
     void afficherAttributs() const;
     void acheter (Produit * produit);
     void afficherPanier() const;

@@ -12,8 +12,8 @@
 
 /****************************************************************************
  * Fonction: Rayon::Rayon()
- * Description: Fusion des Constructeurs par parametre/par défaut
- * ParamËtres: (string) categorie
+ * Description: Fusion des Constructeurs par parametre/par defaut
+ * Parametres: (string) categorie, (Produit **) tousProduits, (int) capaciteProduits, (int) nombreProduit
  * Retour: aucun
  ****************************************************************************/
 Rayon::Rayon(string categorie, Produit ** tousProduits, int capaciteProduits, int nombreProduits)
@@ -30,7 +30,7 @@ Rayon::Rayon(string categorie, Produit ** tousProduits, int capaciteProduits, in
 /****************************************************************************
  * Fonction: Rayon::~Rayon()
  * Description: Destructeur par defaut
- * ParamËtres: aucun
+ * Parametres: aucun
  * Retour: aucun
  ****************************************************************************/
 Rayon::~Rayon()
@@ -42,7 +42,7 @@ Rayon::~Rayon()
 /****************************************************************************
  * Fonction:   Rayon::obtenirCategorie()
  * Description: Retourne le nom_
- * ParamËtres: aucun
+ * Parametres: aucun
  * Retour: (string) la valeur de categorie_
  ****************************************************************************/
 string Rayon::obtenirCategorie() const
@@ -53,8 +53,8 @@ string Rayon::obtenirCategorie() const
 /****************************************************************************
  * Fonction:   Rayon::obtenirTousProduits() const
  * Description: Retourne tousProduits_
- * ParamËtres: aucun
- * Retour: (Produit) la valeur de tousProduits_
+ * Parametres: aucun
+ * Retour: (Produit**) la valeur de tousProduits_
  ****************************************************************************/
 
 Produit** Rayon::obtenirTousProduits() const
@@ -65,7 +65,7 @@ Produit** Rayon::obtenirTousProduits() const
 /****************************************************************************
  * Fonction:   Rayon::obtenirNombreProduits() const
  * Description: Retourne nombreProduits_
- * ParamËtres: aucun
+ * Parametres: aucun
  * Retour: (int) la valeur de nombreProduits_
  ****************************************************************************/
 
@@ -76,7 +76,7 @@ int Rayon::obtenirNombreProduits() const
 /****************************************************************************
 * Fonction:   Rayon::obtenirCapaciteProduits() const
 * Description: Retourne capaciteProduits_
-* ParamËtres: aucun
+* Parametres: aucun
 * Retour: (int) la valeur de capaciteProduits_
 ****************************************************************************/
 
@@ -88,7 +88,7 @@ int Rayon::obtenirCapaciteProduits() const
 /****************************************************************************
  * Fonction:   Rayon::modifierCategorie()
  * Description: Modifie l'attribut categorie_
- * ParamËtres: string caterogie
+ * Parametres: (in) - string caterogie
  * Retour: aucun
  ****************************************************************************/
 
@@ -100,7 +100,7 @@ void Rayon::modifierCategorie (string categorie)
 /****************************************************************************
  * Fonction:   Rayon::ajouterProduits()
  * Description: Modifie l'attribut tousProduits_
- * ParamËtres: Produit* produit
+ * Parametres: (in-out) - Produit* produit
  * Retour:
  ****************************************************************************/
 
@@ -135,7 +135,7 @@ void Rayon::ajouterProduit(Produit * produit)
 /****************************************************************************
  * Fonction:   Rayon::afficher()
  * Description: Affiche l'état des attributs
- * ParamËtres: aucun
+ * Parametres: aucun
  * Retour:
  ****************************************************************************/
 
@@ -155,6 +155,5 @@ void Rayon::afficher() const
 	cout << setw(120) << setfill('*') << "*" << endl;
 	cout << setfill(' ');
 
-    // A COMPLETER;
 
 }

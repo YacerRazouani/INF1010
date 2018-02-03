@@ -12,12 +12,12 @@
 /****************************************************************************
  * Fonction: Produit::Produit()
  * Description: Fusion des Constructeurs par parametre et par défaut
- * ParamËtres: (string) nom, (int) reference, (double) prix
+ * Parametres: (in)- (string) nom, (int) reference, (double) prix
  * Retour: aucun
  ****************************************************************************/
 Produit::Produit(string nom, int reference, double prix)
 {
-    // Constructeur par parametre
+    // Constructeur
     nom_ = nom;
     reference_ = reference;
     prix_ = prix;
@@ -27,7 +27,7 @@ Produit::Produit(string nom, int reference, double prix)
 /****************************************************************************
  * Fonction: Produit::~Produit()
  * Description: Destructeur par defaut
- * ParamËtres: aucun
+ * Parametres: aucun
  * Retour: aucun
  ****************************************************************************/
 Produit::~Produit()
@@ -39,7 +39,7 @@ Produit::~Produit()
 /****************************************************************************
  * Fonction:   Produit::obtenirNom() const
  * Description: Retourne l'attribut nom_
- * ParamËtres: aucun
+ * Parametres: aucun
  * Retour: (string) la valeur de nom_
  ****************************************************************************/
 string Produit::obtenirNom() const
@@ -50,7 +50,7 @@ string Produit::obtenirNom() const
 /****************************************************************************
  * Fonction:   Produit::obtenirReference() const
  * Description: Retourne l'attribut reference_
- * ParamËtres: aucun
+ * Parametres: aucun
  * Retour: (int) la valeur de reference_
  ****************************************************************************/
 
@@ -62,7 +62,7 @@ int Produit::obtenirReference() const
 /****************************************************************************
  * Fonction:   Produit::obtenirPrix() const
  * Description: Retourne l'attribut prix_
- * ParamËtres: aucun
+ * Parametres: aucun
  * Retour: (double) la valeur de prix_
  ****************************************************************************/
 
@@ -74,7 +74,7 @@ double Produit::obtenirPrix() const
 /****************************************************************************
  * Fonction:   Produit::modifierNom()
  * Description: Modifie l'attribut nom_
- * ParamËtres: string nom
+ * Parametres: (in) - string nom
  * Retour: 
  ****************************************************************************/
 
@@ -86,7 +86,7 @@ void Produit::modifierNom(string nom)
 /****************************************************************************
  * Fonction:   Produit::modifierReference()
  * Description: Modifie l'attribut reference_
- * ParamËtres: int reference
+ * Parametres: (in) - int reference
  * Retour:
  ****************************************************************************/
 
@@ -98,7 +98,7 @@ void Produit::modifierReference(int reference)
 /****************************************************************************
  * Fonction:   Produit::modifierPrix()
  * Description: Modifie l'attribut prix_
- * ParamËtres: double prix_
+ * Parametres: (in) - double prix
  * Retour:
  ****************************************************************************/
 
@@ -110,7 +110,7 @@ void Produit::modifierPrix(double prix)
 /****************************************************************************
  * Fonction:   Produit::afficher()
  * Description: Affiche l’etat des attributs.
- * ParamËtres: aucun
+ * Parametres: aucun
  * Retour:
  ****************************************************************************/
 

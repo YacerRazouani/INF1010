@@ -12,7 +12,8 @@
 /****************************************************************************
  * Fonction: Panier::Panier(int capacite)
  * Description: Constructeur par parametre
- * ParamËtres: int capacite * Retour: aucun
+ * Parametres: (in) int capacite
+ * Retour: aucun
  ****************************************************************************/
 Panier::Panier(int capacite)
 {
@@ -32,7 +33,7 @@ Panier::Panier(int capacite)
 /****************************************************************************
  * Fonction: Panier::~Panier()
  * Description: Destructeur par defaut
- * ParamËtres: aucun
+ * Parametres: aucun
  * Retour: aucun
  ****************************************************************************/
 Panier::~Panier()
@@ -47,7 +48,7 @@ Panier::~Panier()
  * Fonction: Panier::obtenirContenuPanier()
  * Description: retourne contenuPanier_
  * Parametres: aucun
- * Retour: Produit**
+ * Retour: (Produit**) la valeur de contenuPanier_
  ****************************************************************************/
 Produit** Panier::obtenirContenuPanier() const
 {
@@ -57,8 +58,8 @@ Produit** Panier::obtenirContenuPanier() const
 /****************************************************************************
  * Fonction:   Panier::obtenirNombreContenu()
  * Description: Retourne le nombreContenu_
- * ParamËtres: aucun
- * Retour: int
+ * Parametres: aucun
+ * Retour: (int) la valeur de nombreContenu_
  ****************************************************************************/
 int Panier::obtenirNombreContenu() const
 {
@@ -68,8 +69,8 @@ int Panier::obtenirNombreContenu() const
 /****************************************************************************
  * Fonction:   Panier::obtenirTotalApayer()
  * Description: Retourne totalAPayer_
- * ParamËtres: aucun
- * Retour: double
+ * Parametres: aucun
+ * Retour: (double) la valeur de totalApayer_
  ****************************************************************************/
 
 double Panier::obtenirTotalApayer() const
@@ -80,7 +81,7 @@ double Panier::obtenirTotalApayer() const
 /****************************************************************************
  * Fonction:   Panier::ajouter ( Produit * prod)
  * Description: Ajoute le pointeur Produit * prod au tableau de produits
- * ParamËtres: Produit * prod
+ * Parametres: (in-out) Produit * prod
  * Retour: aucun
  ****************************************************************************/
 
@@ -103,33 +104,12 @@ void Panier::ajouter(Produit * prod)
 	}
 
 	totalAPayer_ = totalAPayer_ + prod->obtenirPrix();
-
-	//else {
-	//	if (capaciteContenu_ == 0) {
-	//		capaciteContenu_ = 1;
-	//	}
-	//	int capaciteNouveauTableau = capaciteContenu_ * 2;
-	//	Produit** nouveauTableau = new Produit*[capaciteContenu_];
-	//	for (int i = 0; i < capaciteContenu_; i++) {
-	//		nouveauTableau[i] = contenuPanier_[i];
-	//	}
-	//	delete[] contenuPanier_;
-	//	capaciteContenu_ *= 2;
-	//	contenuPanier_ = nouveauTableau;
-	//	while (contenuPanier_[i] != nullptr) {
-	//		i++;
-	//	}
-	//	if (contenuPanier_[i] == nullptr && i < capaciteContenu_) {
-	//		contenuPanier_[i] = prod;
-	//	}
-	//}
-	//totalAPayer_ = totalAPayer_ + prod->obtenirPrix();
 }
 
 /****************************************************************************
 * Fonction:   Panier::livrer()
 * Description: Supprime le contenu du tableau et re-initialise l'etat des autres attributs
-* ParamËtres: aucun
+* Parametres: aucun
 * Retour: aucun
 ****************************************************************************/
 
@@ -147,9 +127,9 @@ void Panier::livrer()
 
 /****************************************************************************
  * Fonction:   Panier::afficher()
- * Description: Affiche ...
- * ParamËtres: aucun
- * Retour:
+ * Description: Affiche le contenu du panier
+ * Parametres: aucun
+ * Retour: aucun
  ****************************************************************************/
 
 void Panier::afficher() const

@@ -14,7 +14,7 @@
 /****************************************************************************
  * Fonction: Client::Client()
  * Description: Fusion des Constructeurs par parametre et par défaut
- * ParamËtres: aucun
+ * Parametres: (in) - (string) nom, (string) prenom, (int) identifiant, (string) codePostal, (long) dateNaissance, (Panier*) panier
  * Retour: aucun
  ****************************************************************************/
 Client::Client(string nom , string prenom, int identifiant, string codePostal, long dateNaissance, Panier* panier)
@@ -31,13 +31,13 @@ Client::Client(string nom , string prenom, int identifiant, string codePostal, l
 /****************************************************************************
  * Fonction: Client::~Client()
  * Description: Destructeur par defaut
- * ParamËtres: aucun
+ * Parametres: aucun
  * Retour: aucun
  ****************************************************************************/
 Client::~Client()
 {
     // Destructeur d'un client
-    //monPanier_->~Panier(); JE NE SUIS PAS SUR SI IL FAUT DETRUIRE LE PANIER DU CLIENT!!!!!!!!!!!!!!!!!!!!!!!!!
+
 	if (monPanier_->obtenirContenuPanier() == 0) {
 		delete[] monPanier_;
 	}
@@ -47,7 +47,7 @@ Client::~Client()
 /****************************************************************************
  * Fonction:   Client::obtenirNom() const
  * Description: Retourne l'attribut nom_
- * ParamËtres: aucun
+ * Parametres: aucun
  * Retour: (string) la valeur de nom_
  ****************************************************************************/
 string Client::obtenirNom() const
@@ -58,7 +58,7 @@ string Client::obtenirNom() const
 /****************************************************************************
  * Fonction:   Client::obtenirPrenom() const
  * Description: Retourne l'attribut prenom_
- * ParamËtres: aucun
+ * Parametres: aucun
  * Retour: (string) la valeur de prenom_
  ****************************************************************************/
 
@@ -70,8 +70,9 @@ string Client::obtenirPrenom() const
 /****************************************************************************
  * Fonction:   Client::obtenirIdentifiant() const
  * Description: Retourne l'attribut identifiant_
- * ParamËtres: aucun
+ * Parametres: aucun
  * Retour: (int) la valeur de identifiant_
+ 
  ****************************************************************************/
 
 int  Client::obtenirIdentifiant() const
@@ -82,7 +83,7 @@ int  Client::obtenirIdentifiant() const
 /****************************************************************************
  * Fonction:   Client::obtenirCodePostal() const
  * Description: Retourne l'attribut codePostal_
- * ParamËtres: aucun
+ * Parametres: aucun
  * Retour: (string) la valeur de codePostal_
  ****************************************************************************/
 string Client::obtenirCodePostal() const
@@ -93,7 +94,7 @@ string Client::obtenirCodePostal() const
 /****************************************************************************
  * Fonction:   Client::obtenirDateNaissance() const
  * Description: Retourne l'attribut DateNaissance_
- * ParamËtres: aucun
+ * Parametres: aucun
  * Retour: (long) la valeur de dateNaissance_
  ****************************************************************************/
 long Client::obtenirDateNaissance() const
@@ -104,7 +105,7 @@ long Client::obtenirDateNaissance() const
 /****************************************************************************
  * Fonction:   Client::modifierNom
  * Description: Modifie l'attribut nom_
- * ParamËtres: string nom
+ * Parametres: (in) - string nom
  * Retour:
  ****************************************************************************/
 
@@ -115,7 +116,7 @@ void Client::modifierNom(string nom)
 /****************************************************************************
  * Fonction:   Client::modifierPrenom
  * Description: Modifie l'attribut prenom_
- * ParamËtres: string prenom
+ * Parametres: (in) - string prenom
  * Retour:
  ****************************************************************************/
 
@@ -127,7 +128,7 @@ void Client::modifierPrenom(string prenom)
 /****************************************************************************
  * Fonction:   Client::modifierIdentifiant
  * Description: Modifie l'attribut identifiant_
- * ParamËtres: int identifiant
+ * Parametres: (in) - int identifiant
  * Retour:
  ****************************************************************************/
 
@@ -139,7 +140,7 @@ void Client::modifierIdentifiant (int identifiant)
 /****************************************************************************
  * Fonction:   Client::modifierCodePostal
  * Description: Modifie l'attribut codePostal_
- * ParamËtres: string codePostal
+ * Parametres: (in) - string codePostal
  * Retour:
  ****************************************************************************/
 
@@ -151,7 +152,7 @@ void Client::modifierCodePostal (string codePostal)
 /****************************************************************************
  * Fonction:   Client::modifierDateNaissance
  * Description: Modifie l'attribut DateNaissance_
- * ParamËtres: long dateNaissance
+ * Parametres: (in) - long dateNaissance
  * Retour:
  ****************************************************************************/
 
@@ -161,8 +162,8 @@ void Client::modifierDateNaissance (long dateNaissance)
 }
 /****************************************************************************
  * Fonction:   Clier::afficherAttributs()
- * Description: Affiche l'état des attributs
- * ParamËtres: aucun
+ * Description: Affiche l'etat des attributs
+ * Parametres: aucun
  * Retour:
  ****************************************************************************/
 
@@ -177,15 +178,15 @@ void Client::afficherAttributs() const
     
 /****************************************************************************
  * Fonction:   Client::acheter()
- * Description: Ajoute un produit dans le panier du client. Si le panier n’existe pas, on créé un objet Panier de 4 produits, et on ajoute le produit dans le Panier du client
- * ParamËtres: Produit* produit
+ * Description: Ajoute un produit dans le panier du client. Si le panier n’existe pas, on cree un objet Panier de 4 produits, et on ajoute le produit dans le Panier du client
+ * Parametres: (in-out) Produit* produit
  * Retour:
  ****************************************************************************/
 
 
 void Client::acheter(Produit * produit)
 {
-    if (monPanier_ == nullptr){														//Si le tableau est nul on crée un objet Panier de 4 produit
+    if (monPanier_ == nullptr){														//Si le tableau est nul on cree un objet Panier de 4 produit
 		monPanier_ = new Panier(4);
 		monPanier_->ajouter(produit);
     }
@@ -200,7 +201,7 @@ void Client::acheter(Produit * produit)
 /****************************************************************************
  * Fonction:   Client::afficherPanier() const
  * Description: Affiche le contenu du panier s'il n'est pas vide
- * ParamËtres: aucun
+ * Parametres: aucun
  * Retour:
  ****************************************************************************/
 
@@ -212,7 +213,7 @@ void Client::afficherPanier() const
 /****************************************************************************
 * Fonction:   Client::livrer()
 * Description:  Permet de livrer le contenu du panier, en supprimant le Panier actuel du client.
-* ParamËtres: aucun
+* Parametres: aucun
 * Retour: aucun****************************************************************************/
     
 void Client::livrerPanier()

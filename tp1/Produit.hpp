@@ -3,7 +3,7 @@
  * Auteur: Amar Ghaly et Yacer Razouani
  * Date: 23 janvier 2018
  * Mise a jour :
- * Description: Définition de la classe Produit
+ * Description: Definition de la classe Produit
  ****************************************************************************/
 
 #ifndef Produit_hpp
