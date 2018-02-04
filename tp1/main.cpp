@@ -1,6 +1,6 @@
 /**************************************************
  * Titre: Travail pratique #1 - Main.cpp
- * Date: 20 janvier 2018
+ * Date: 4 fevrier 2018
  * Auteur: Amar Ghaly et Yacer Razouani
  **************************************************/
 

@@ -2,7 +2,7 @@
  * Fichier: Rayon.hpp
  * Auteur: Amar Ghaly et Yacer Razouani
  * Date: 23 janvier 2018
- * Mise a jour :
+ * Mise a jour : 4 février
  * Description: Definition de la classe Rayon
  ****************************************************************************/
 #ifndef Rayon_hpp
@@ -18,6 +18,7 @@ class Rayon
 public:
     // Fusion des constructeurs par defaut et par parametres
     Rayon(string categorie = "inconnu", Produit ** tousProduits = nullptr, int capaciteProduits = 0,int nombreProduits = 0) ;
+    
     // Destructeur par defaut
     ~Rayon();
     

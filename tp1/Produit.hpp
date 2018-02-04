@@ -2,7 +2,7 @@
  * Fichier: Produit.hpp
  * Auteur: Amar Ghaly et Yacer Razouani
  * Date: 23 janvier 2018
- * Mise a jour :
+ * Mise a jour : 4 fevrier
  * Description: Definition de la classe Produit
  ****************************************************************************/
 

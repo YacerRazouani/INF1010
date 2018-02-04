@@ -2,7 +2,7 @@
  * Fichier: Produit.cpp
  * Auteur: Amar Ghaly et Yacer Razouani
  * Date: 23 janvier 2018
- * Mise a jour :
+ * Mise a jour : 4 fevrier
  * Description: Implementation de la classe Produit
  ****************************************************************************/
 
@@ -108,7 +108,7 @@ void Produit::modifierPrix(double prix)
 }
 
 /****************************************************************************
- * Fonction:   Produit::afficher()
+ * Fonction:   Produit::afficher() const
  * Description: Affiche l’etat des attributs.
  * Parametres: aucun
  * Retour:

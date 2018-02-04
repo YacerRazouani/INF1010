@@ -150,7 +150,7 @@ void Client::modifierCodePostal (string codePostal)
 }
 
 /****************************************************************************
- * Fonction:   Client::modifierDateNaissance
+ * Fonction:   Client::modifierDateNaissance()
  * Description: Modifie l'attribut DateNaissance_
  * Parametres: (in) - long dateNaissance
  * Retour:
@@ -161,7 +161,7 @@ void Client::modifierDateNaissance (long dateNaissance)
     dateNaissance_ = dateNaissance;
 }
 /****************************************************************************
- * Fonction:   Clier::afficherAttributs()
+ * Fonction:   Clier::afficherAttributs() const
  * Description: Affiche l'etat des attributs
  * Parametres: aucun
  * Retour:

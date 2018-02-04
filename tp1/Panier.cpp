@@ -2,7 +2,7 @@
  * Fichier: Panier.hpp
  * Auteur: Amar Ghaly et Yacer Razouani
  * Date: 23 janvier 2018
- * Mise a jour :
+ * Mise a jour : 4 fevrier
  * Description: Implementation de la classe Panier
  ****************************************************************************/
 
@@ -45,7 +45,7 @@ Panier::~Panier()
 }
 
 /****************************************************************************
- * Fonction: Panier::obtenirContenuPanier()
+ * Fonction: Panier::obtenirContenuPanier() const
  * Description: retourne contenuPanier_
  * Parametres: aucun
  * Retour: (Produit**) la valeur de contenuPanier_
@@ -56,7 +56,7 @@ Produit** Panier::obtenirContenuPanier() const
 }
 
 /****************************************************************************
- * Fonction:   Panier::obtenirNombreContenu()
+ * Fonction:   Panier::obtenirNombreContenu() const
  * Description: Retourne le nombreContenu_
  * Parametres: aucun
  * Retour: (int) la valeur de nombreContenu_
@@ -67,7 +67,7 @@ int Panier::obtenirNombreContenu() const
 }
 
 /****************************************************************************
- * Fonction:   Panier::obtenirTotalApayer()
+ * Fonction:   Panier::obtenirTotalApayer() const
  * Description: Retourne totalAPayer_
  * Parametres: aucun
  * Retour: (double) la valeur de totalApayer_
@@ -79,7 +79,7 @@ double Panier::obtenirTotalApayer() const
 }
 
 /****************************************************************************
- * Fonction:   Panier::ajouter ( Produit * prod)
+ * Fonction:   Panier::ajouter ()
  * Description: Ajoute le pointeur Produit * prod au tableau de produits
  * Parametres: (in-out) Produit * prod
  * Retour: aucun
@@ -126,7 +126,7 @@ void Panier::livrer()
 }
 
 /****************************************************************************
- * Fonction:   Panier::afficher()
+ * Fonction:   Panier::afficher() const 
  * Description: Affiche le contenu du panier
  * Parametres: aucun
  * Retour: aucun

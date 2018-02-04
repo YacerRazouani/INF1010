@@ -2,7 +2,7 @@
  * Fichier: Rayon.hpp
  * Auteur: Amar Ghaly et Yacer Razouani
  * Date: 23 janvier 2018
- * Mise a jour :
+ * Mise a jour : 4 fevrier
  * Description: Implementation de la classe Rayon
  ****************************************************************************/
 
@@ -40,7 +40,7 @@ Rayon::~Rayon()
 }
 
 /****************************************************************************
- * Fonction:   Rayon::obtenirCategorie()
+ * Fonction:   Rayon::obtenirCategorie() const
  * Description: Retourne le nom_
  * Parametres: aucun
  * Retour: (string) la valeur de categorie_
@@ -133,7 +133,7 @@ void Rayon::ajouterProduit(Produit * produit)
 }
 
 /****************************************************************************
- * Fonction:   Rayon::afficher()
+ * Fonction:   Rayon::afficher() const
  * Description: Affiche l'état des attributs
  * Parametres: aucun
  * Retour:
