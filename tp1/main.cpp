@@ -92,7 +92,8 @@ int main()
     client.afficherPanier();
     
     //13-  terminer le programme correctement
-    // AJOUTER LES DELETE
+	delete[] listeProduits;
+	listeProduits = nullptr;
     
     
     return 0;
