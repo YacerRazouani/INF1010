@@ -44,18 +44,6 @@ void Panier::modifierTotalAPayer(double totalAPayer)
 // autres méthodes
 void Panier::ajouter(Produit * prod)
 {
-	//if (nombreContenu_ >= capaciteContenu_)
-	//{
-	//	Produit ** temp;
-	//	capaciteContenu_ *= 2;
-	//	temp = new Produit*[capaciteContenu_];
-	//	for (int i = 0; i < nombreContenu_; i++)
-	//		temp[i] = contenuPanier_[i];
-	//	delete contenuPanier_;
-	//	contenuPanier_ = temp;
-	//}
-	//contenuPanier_[nombreContenu_++] = prod;
-
 	contenuPanier_.push_back(prod);
 
 	totalAPayer_ += prod->obtenirPrix();

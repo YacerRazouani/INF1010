@@ -82,8 +82,8 @@ void Client::modifierDateNaissance(long date)
 // Autres méthodes
 void Client::acheter(Produit * prod)
 {
-	//if (monPanier_ == nullptr)
-	//	monPanier_ = new Panier(4);
+	if (monPanier_ == nullptr)
+		monPanier_ = new Panier();
 	monPanier_->ajouter(prod);
 }
 

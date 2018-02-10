@@ -62,12 +62,16 @@ int main()
 	// Affichez le contenu du rayon
 	cout << sport;
 	// Affichez le nombre de doublons du premier produit dans le rayon sport
-	//cout << sport.compterDoublons(*produits[0]);
+	cout << "Nombre de doublons du produit p0 : "
+		 << sport.compterDoublons(*produits[0])
+		 << endl << endl;
 	// Creation d'un client
 	Client martine("Bellaiche", "Martine", 1111, "H2T3A6", 199004);
 
-	// Martine achète les 5 derniers porduits
-
+	// Martine achète les 5 derniers produits
+	for (int i = 14; i > 9; i--) {
+		martine.acheter(produits[i]);
+	}
 	// Copie du client martine dans un autre client puis changment de son nom, prenom et identifiant pour "Paul Martin 689"
 	Client paul = Client(martine);
 	paul.modifierNom("Martin");
@@ -77,12 +81,14 @@ int main()
 	cout << "Test identifiant paul: " << boolalpha << (689 == paul) << endl << endl;
 
 	// Paul achete le produit p0
-
+	paul.acheter(produits[0]);
 	// Livrez le panier de Paul
-
+	paul.livrerPanier();
 	// Affichez le panier de Paul et de Martine
-
-	// Afichez le produit le plus cher du panier de martine
-
+	cout << paul;
+	cout << martine;
+	// Affichez le produit le plus cher du panier de martine
+	cout << "Le produit le plus cher que Martine ait achete est : " << endl
+		 <<	martine.obtenirPanier()->trouverProduitPlusCher();
 	// Terminer le programme correctement
 }
