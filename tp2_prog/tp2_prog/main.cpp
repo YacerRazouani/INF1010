@@ -76,13 +76,15 @@ int main()
 
 	cout << "Test identifiant paul: " << boolalpha << (689 == paul) << endl << endl;
 
-	// Paul achete le produit p0
-
-	// Livrez le panier de Paul
-
-	// Affichez le panier de Paul et de Martine
-
-	// Afichez le produit le plus cher du panier de martine
-
+    // Paul achete le produit p0
+    paul.acheter(produits[0]);
+    // Livrez le panier de Paul
+    paul.livrerPanier();
+    // Affichez le panier de Paul et de Martine
+    cout << paul;
+    cout << martine;
+    // Affichez le produit le plus cher du panier de martine
+    cout << "Le produit le plus cher que Martine ait achete est :"
+    << martine.obtenirPanier()->trouverProduitPlusCher();
 	// Terminer le programme correctement
 }
