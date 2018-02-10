@@ -79,6 +79,6 @@ ostream& operator<<(ostream& o, const Produit& produit)
 {
 	o << "nom : " << produit.obtenirNom()
 		<< "\t ref : " << produit.obtenirReference()
-		<< "\t prix : " << produit.obtenirReference();
+		<< "\t prix : " << produit.obtenirReference() << endl;
 	return o;
 }
