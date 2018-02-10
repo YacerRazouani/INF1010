@@ -103,7 +103,7 @@ ostream & operator<<(ostream& o, const Rayon& rayon)
 	for (int i = 0; i < rayon.obtenirNombreProduits(); i++) {
 		o << "----> ";
 		//tousProduits_[i]->afficher();
-		o << rayon.tousProduits_[i];
+		o << *(rayon.tousProduits_[i]);
 	}
 	return o;
 }
