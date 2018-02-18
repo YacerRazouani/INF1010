@@ -9,6 +9,13 @@
 
 
 
+
+Client::Client(const string & nom, const string & prenom, int identifiant, const string & codePostal, long date) : Usager(nom, prenom, identifiant, codePostal)
+{
+	dateNaissance_ = date;
+	monPanier_ = nullptr;
+}
+
 Client::~Client()
 {
 	if (monPanier_ != nullptr)
@@ -57,9 +64,9 @@ void Client::acheter(ProduitOrdinaire * prod)
 		monPanier_ = new Panier(this->obtenirIdentifiant());
 	monPanier_->ajouter(prod);
 	// obtenir une note aléatoire
-	
+	int note = rand() % 5;
 	// faire la mise à jour de la satisfaction au fournisseur
-	
+	prod->obtenirFournisseur().noter(note);
 }
 
 void Client::livrerPanier()
@@ -73,6 +80,13 @@ void Client::livrerPanier()
 void Client::miserProduit(ProduitAuxEncheres* produitAuxEncheres, double montantMise) {
 	// à faire
 	
+	if (montantMise > produitAuxEncheres->obtenirPrixBase()) {						//ici je verifie que le montant voulant etre miser est superieur au montant actuel.
+		produitAuxEncheres->modifierPrixBase(montantMise);							//on remplace le prix et le nom, si la condition est remplie.
+		produitAuxEncheres->modifierIdentifiantClient(obtenirIdentifiant());
+		if (monPanier_ == nullptr)													//On ajoute le produit au panier.
+			monPanier_ = new Panier(this->obtenirIdentifiant());
+		monPanier_->ajouter(produitAuxEncheres);
+	}
 }
 
 Client & Client::operator=(const Client & client)
@@ -97,6 +111,20 @@ Client & Client::operator=(const Client & client)
 
 ostream & operator<<(ostream & os, const Client & client)
 {
-	
 	// à faire
+	Usager usager = static_cast<Usager>(client);
+	os << "Client" << usager;
+	os << "Le panier de " << client.obtenirPrenom();
+	if (client.obtenirPanier() == nullptr) {
+		os << " est vide !" << endl;
+	}
+	else {
+		os << ":" << endl;
+		os << *client.monPanier_
+	       << endl << endl
+			<< "----> total a payer : "
+			<< client.monPanier_->calculerTotalApayer()
+			<< endl;
+	}
+	return os;
 }

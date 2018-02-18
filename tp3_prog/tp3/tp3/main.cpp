@@ -29,16 +29,18 @@ int main()
 	Client martine("Bellaiche", "Martine", 1111, "H2T3A6", 199004);
 
 	// creez un objet de la classe client à l'aide du constructeur de copie
-	// et modifier sonm identifiant
+	// et modifier son identifiant
 	Client maCopie(martine);
 	maCopie.modifierIdentifiant(777);
 
 	// vérifier si les copies sont identiques;
 
-	if (maCopie == martine)
+	if (maCopie == martine) {
 		cout << "clients identitiques" << endl;
-	else
+	}
+	else {
 		cout << " non Identiques " << endl;
+	}
 
 	Client unAutreClient("Client", "autre", 2222, "h3T3A7", 20180212);
 	unAutreClient = maCopie;

@@ -5,9 +5,8 @@
 *******************************************/
 #include "Fournisseur.h"
 
-Fournisseur::Fournisseur(const string & nom, const string & prenom, int identifiant, const string & codePostal) : Usager("0", "0", 0, "0")
+Fournisseur::Fournisseur(const string & nom, const string & prenom, int identifiant, const string & codePostal) : Usager(nom, prenom, identifiant, codePostal)
 {
-	Usager::Usager(nom, prenom, identifiant, codePostal);
 	for (int i = 0; i < NIVEAUX_SATISFACTION; i++) {
 		satisfaction_.niveaux_[i] = 0;
 	}
@@ -51,15 +50,17 @@ void Fournisseur::enleverProduit(Produit * produit)
 Fournisseur & Fournisseur::operator=(const Fournisseur & fournisseur)
 {
 	Usager::operator=(fournisseur);
+	return *this;
 }
 
 ostream & operator<<(ostream & os, Fournisseur & fournisseur)
 {
-	cout << "Fournisseur: ";
-	cout << fournisseur;
-	cout << "notes ";
+	Usager usager = static_cast<Usager>(fournisseur);
+	os << "Fournisseur: ";
+	os << usager;
+	os << "notes ";
 	for (int i = 0; i < NIVEAUX_SATISFACTION; i++) {
-		cout << i << ": " << fournisseur.satisfaction_.niveaux_[i] << endl;
+		os << i << ": " << fournisseur.satisfaction_.niveaux_[i] << endl;
 	}
-	
+	return os;
 }
