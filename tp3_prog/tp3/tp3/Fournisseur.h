@@ -6,7 +6,9 @@
 
 #ifndef FOURNISSEUR_H
 #define FOURNISSEUR_H
+
 const int NIVEAUX_SATISFACTION = 5;
+
 struct Satisfaction {
 	int niveaux_[NIVEAUX_SATISFACTION];
 };

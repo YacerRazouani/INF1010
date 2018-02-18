@@ -1,7 +1,7 @@
 /********************************************
 * Titre: Travail pratique #3 - Produit.h
-* Date: 
-* Auteur: 
+* Date: 16 fevrier 2018
+* Auteur: Amar Ghaly (1905322) & Yacer Razouani (1899606)
 *******************************************/
 
 #ifndef PRODUIT_H
