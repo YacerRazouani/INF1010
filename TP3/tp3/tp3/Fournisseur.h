@@ -1,8 +1,8 @@
 /********************************************
-* Titre: Travail pratique #3 - Fournisseur.h
-* Date: 
-* Auteur: 
-*******************************************/
+ * Titre: Travail pratique #3 - Client.h
+ * Date: 16 fevrier 2018
+ * Auteur: Amar Ghaly (1905322) & Yacer Razouani (1899606)
+ *******************************************/
 
 #ifndef FOURNISSEUR_H
 #define FOURNISSEUR_H

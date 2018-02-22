@@ -8,7 +8,6 @@
 using namespace std;
 
 Panier::Panier(int idClient) {
-	// TODO
 	idClient_ = idClient;
 	totalAPayer_ = 0;
 
@@ -43,7 +42,6 @@ double Panier::obtenirTotalApayer() const {
 
 double Panier::calculerTotalApayer()  const
 {
-	 // TODO
 	double totalAPayer = totalAPayer_;
 	for (int i = 0; i < contenuPanier_.size(); i++) {
 		if (contenuPanier_[i]->retournerType() == 1) {											//Le type 1 est le type ProduitAuxEncheres.
@@ -73,7 +71,7 @@ void Panier::modifierIdClient(int idClient) {
 
 void Panier::ajouter(Produit * prod)
 {
-	// TODO
+
 	if (prod->retournerType() == 0) {											//Le type 0 est le type ProduitOrdinaire.
 		ProduitOrdinaire* produit = static_cast<ProduitOrdinaire*>(prod);
 		if (produit->obtenirEstTaxable()) {
@@ -108,7 +106,7 @@ Produit* Panier::trouverProduitPlusCher()
 
 ostream & operator<<(ostream & os,  const Panier & panier)
 {
-	// TODO
+
 	for (int i = 0; i < panier.obtenirContenuPanier().size(); i++) {
 		if (panier.obtenirContenuPanier()[i]->retournerType() == 0) {													//Type ProduitOrdinaire.
 			ProduitOrdinaire* produit = static_cast<ProduitOrdinaire*> (panier.obtenirContenuPanier()[i]);
