@@ -45,7 +45,7 @@ double Panier::calculerTotalApayer()  const
 {
 	 // TODO
 	double totalAPayer = totalAPayer_;
-	for (int i = 0; i < contenuPanier_.size(); i++) {
+	for (unsigned int i = 0; i < contenuPanier_.size(); i++) {
 		if (contenuPanier_[i]->retournerType() == 1) {											//Le type 1 est le type ProduitAuxEncheres.
 			ProduitAuxEncheres* produit = static_cast<ProduitAuxEncheres*>(contenuPanier_[i]);
 			if (produit->obtenirIdentifiantClient() == idClient_) {
@@ -109,7 +109,7 @@ Produit* Panier::trouverProduitPlusCher()
 ostream & operator<<(ostream & os,  const Panier & panier)
 {
 	// TODO
-	for (int i = 0; i < panier.obtenirContenuPanier().size(); i++) {
+	for (unsigned int i = 0; i < panier.obtenirContenuPanier().size(); i++) {
 		if (panier.obtenirContenuPanier()[i]->retournerType() == 0) {													//Type ProduitOrdinaire.
 			ProduitOrdinaire* produit = static_cast<ProduitOrdinaire*> (panier.obtenirContenuPanier()[i]);
 			os << *produit;
