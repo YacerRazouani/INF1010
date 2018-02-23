@@ -31,7 +31,6 @@ public:
 	void modifierTotalAPayer(double totalAPayer);
 	void modifierIdClient(int idClient);
 
-	// TODO : Cette methode est a modifier
 	void ajouter(Produit * prod);
 	void livrer();
 
