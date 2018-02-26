@@ -1,7 +1,7 @@
 /********************************************
 * Titre: Travail pratique #3 - ProduitAuxEncheres.h
-* Date: 
-* Auteur:
+* Date: 25 février 2018
+* Modifier par: Amar Ghaly (1905322) & Yacer Razouani (1899606)
 *******************************************/
 #ifndef PRODUITAUXENCHERES_H
 #define PRODUITAUXENCHERES_H

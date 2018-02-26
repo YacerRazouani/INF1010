@@ -1,7 +1,7 @@
 ﻿/**************************************************
 * Titre: Travail pratique #3 - main.cpp
-* Date: 
-* Auteur: 
+* Date: 25 février 2018
+* Modifier par: Amar Ghaly (1905322) & Yacer Razouani (1899606)
 **************************************************/
 
 #include "Fournisseur.h"
@@ -17,10 +17,17 @@ const int  NB_PRODUCTS = 15;
 
 /**
 *Répondez aux questions ici :
-* 1/
+* 1/ Il est logique de deriver les classes ProduitOrdinaires et ProduitAuxEncheres de la classe Produit car
+*	 ces dernieres possedent toutes les attributs d'un Produit avant tout, ensuite ils ont des attributs 
+*	 qui sont propres a leur classes. Bref ils sont tous avant tout des Produit ensuite ils ont des 
+*	 caracteristiques qui sont propres a eux.
 * 2/
-* 2.1
-* 2.2
+* 2.1 Il est utile d'utiliser static_cast car cela permet de transformer notre Produit en ProduitOrdinaire 
+*	  ou ProduitAuxEncheres (une fois que l'on sait a quel classe il appartient) et d'utiliser la surcharge
+*	  de l'operateur<< d'une de ces classes pour afficher notre Produit.
+* 2.2 On ne pourra pas utiliser la surcharge de l'operateur<< de la classe ProduitOrdinaire ou ProduitAuxEncheres,
+*	  car nous pourrions pas distinguer si le produit est ordinaire ou aux encheres. Nous pourrions alors afficher
+*	  le produit que en tant que classe Produit.
 **/
 
 int main()

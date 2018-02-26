@@ -1,7 +1,7 @@
 /********************************************
 * Titre: Travail pratique #3 - Produit.cpp
-* Date: 
-* Auteur: 
+* Date: 25 février 2018
+* Modifier par: Amar Ghaly (1905322) & Yacer Razouani (1899606)
 *******************************************/
 
 #include "Produit.h"

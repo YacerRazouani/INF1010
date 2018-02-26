@@ -1,4 +1,3 @@
-
 /****************************************************************************
  * Fichier: Client.cpp
  * Auteur: Amar Ghaly et Yacer Razouani
