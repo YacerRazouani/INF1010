@@ -137,8 +137,10 @@ void Client::miserProduit(ProduitAuxEncheres* produitAuxEncheres, double montant
 Client & Client::operator=(const Client & client)
 {
     if (this != &client) {
-        Usager temp(*this);
-        temp = static_cast<Usager> (client);
+		this->modifierNom(client.obtenirNom());
+		this->modifierPrenom(client.obtenirPrenom());
+		this->modifierIdentifiant(client.obtenirIdentifiant());
+		this->modifierCodePostal(client.obtenirCodePostal());
         dateNaissance_ = client.obtenirDateNaissance();
         if (client.monPanier_ != nullptr) {
             delete monPanier_;
@@ -173,7 +175,7 @@ ostream & operator<<(ostream & os, const Client & client)
         os << ":" << endl;
         os << *client.monPanier_
         << endl << endl
-        << "----> total à payer : "
+        << "----> total a payer : "
         << client.monPanier_->calculerTotalApayer()
         << endl;
     }

@@ -136,7 +136,7 @@ Usager &Usager::operator=(const Usager & usager)
  * Retour: bool. retourne true sur les identifiants sont les mêmes
  ****************************************************************************/
 bool Usager::operator==(int identifiant) const {
-	return identifiant_ == identifiant_;
+	return identifiant_ == identifiant;
 }
 
 /****************************************************************************
