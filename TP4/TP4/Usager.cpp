@@ -33,7 +33,7 @@ string Usager::obtenirCodePostal() const
 double Usager::obtenirTotalAPayer() const
 {
     // TODO
-	///Y-t-il qqch a mettre??
+	return 0;
 }
 
 void Usager::afficherProfil() const

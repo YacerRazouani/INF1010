@@ -28,7 +28,7 @@ double Client::obtenirTotalAPayer() const
 {
     // TODO
 	double total = 0;
-	for (int i = 0; i < panier_.size(); i++) {
+	for (unsigned int i = 0; i < panier_.size(); i++) {
 		total += panier_[i]->obtenirPrix();
 	}
 	return total;
@@ -81,9 +81,9 @@ void Client::reinitialiser()
 {
     // TODO
 	
-	for (int i = 0; i < panier_.size(); i++) {
+	for (unsigned int i = 0; i < panier_.size(); i++) {
 		if (ProduitAuxEncheres* produit = dynamic_cast<ProduitAuxEncheres*>(panier_[i])) {
-			produit->mettreAJourEnchere(nullptr, this->obtenirPrixInital());
+			produit->mettreAJourEnchere(nullptr, produit->obtenirPrixInitial());
 		}
 	}
 	panier_.clear();

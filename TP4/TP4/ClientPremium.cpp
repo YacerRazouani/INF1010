@@ -24,7 +24,7 @@ double ClientPremium::obtenirTotalAPayer() const
 {
     // TODO
 	double total = Client::obtenirTotalAPayer();
-	total -= (panier_.size * 5);
+	total -= (panier_.size() * 5);
 	return total;
 }
 
