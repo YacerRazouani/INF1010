@@ -1,6 +1,15 @@
+/****************************************************************************
+ * Fichier: Client.cpp
+ * Auteur: Amar Ghaly et Yacer Razouani
+ * Date: 11 mars 2018
+ * Mise a jour :
+ * Description: Implementation de la classe Client
+ ****************************************************************************/
+
 #include "Client.h"
 #include <iostream>
 #include "ProduitAuxEncheres.h"
+
 Client::Client(unsigned int codeClient)
     : Usager(),
       codeClient_(codeClient)
@@ -47,13 +56,13 @@ void Client::afficherProfil() const
 {
     // TODO
 	Usager::afficherProfil();
-	cout << "code client: " << obtenirCodeClient() << endl;
-	cout << "panier: " << panier_.size() << " elements" << endl;
+	cout << "\t \t \t code client: \t " << obtenirCodeClient() << endl;
+	cout << "\t \t \t panier: \t" << obtenirPanier().size() << " elements" << endl;
 }
 
 void Client::modifierCodeClient(unsigned int codeClient)
 {
-    codeClient_ = codeClient_;
+    codeClient_ = codeClient;
 }
 
 void Client::enleverProduit(Produit *produit)
@@ -83,8 +92,14 @@ void Client::reinitialiser()
 	
 	for (unsigned int i = 0; i < panier_.size(); i++) {
 		if (ProduitAuxEncheres* produit = dynamic_cast<ProduitAuxEncheres*>(panier_[i])) {
-			produit->mettreAJourEnchere(nullptr, produit->obtenirPrixInitial());
-		}
+            
+
+            produit->modifierEncherisseur(nullptr);
+            produit->modifierPrixInitial(produit->obtenirPrixInitial());
+            enleverProduit(panier_[i]);
+        }
+        else
+            enleverProduit(panier_[i]);
 	}
 	panier_.clear();
 

@@ -39,13 +39,26 @@ void ProduitAuxEncheres::modifierPrixInitial(double prixInitial)
     prixInitial_ = prixInitial;
 }
 
-void ProduitAuxEncheres::mettreAJourEnchere(Client *encherisseur, double nouveauPrix)
+
+void ProduitAuxEncheres::modifierEncherisseur(Client* encherisseur) {
+    
+    encherisseur_ = encherisseur;
+}
+
+void ProduitAuxEncheres::mettreAJourEnchere(Client * nouvelEncherisseur, double nouveauPrix)
 {
     // TODO
-	if (encherisseur_ != encherisseur) {
-		prix_ = nouveauPrix;
-		encherisseur->ajouterProduit(this);
+	if (nouvelEncherisseur == nullptr){
 		encherisseur_->enleverProduit(this);
-		encherisseur_ = encherisseur;
+        modifierEncherisseur(nouvelEncherisseur);
+        modifierPrixInitial(nouveauPrix);
 	}
+    else if (encherisseur_ != nouvelEncherisseur && nouveauPrix >= prix_) {
+        if (encherisseur_ != nullptr){
+            encherisseur_->enleverProduit(this);
+        }
+        modifierEncherisseur(nouvelEncherisseur);
+        modifierPrixInitial(nouveauPrix);
+        encherisseur_-> ajouterProduit(this);
+    }
 }

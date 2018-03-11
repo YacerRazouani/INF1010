@@ -30,7 +30,7 @@ void Fournisseur::afficherProfil() const
 {
     // TODO
 	Usager::afficherProfil();
-	cout << "catalogue: " << catalogue_.size() << " elements" << endl;
+	cout << "catalogue: " << obtenirCatalogue().size() << " elements" << endl;
 }
 
 void Fournisseur::reinitialiser()

@@ -24,7 +24,10 @@ double ClientPremium::obtenirTotalAPayer() const
 {
     // TODO
 	double total = Client::obtenirTotalAPayer();
-	total -= (panier_.size() * 5);
+    for (unsigned int i = 0; i < panier_.size(); i++) {
+        if (panier_[i]->obtenirPrix() < 5)
+            total += 5 - panier_[i]->obtenirPrix();
+    }
 	return total;
 }
 
@@ -37,5 +40,5 @@ void ClientPremium::afficherProfil() const
 
 void ClientPremium::modifierJoursRestants(unsigned int joursRestants)
 {
-    joursRestants_ = joursRestants_;
+    joursRestants_ = joursRestants;
 }

@@ -16,22 +16,22 @@ void Gestionnaire::afficherLesProfils() const
 double Gestionnaire::obtenirChiffreAffaires() const
 {
     // TODO
-	double total = 0;
+	double chiffre = 0;
 	for (unsigned int i = 0; i < usagers_.size(); i++) {
-		total += usagers_[i]->obtenirTotalAPayer();
+		chiffre += usagers_[i]->obtenirTotalAPayer();
 	}
-	return total;
+	return chiffre;
 }
 void Gestionnaire::ajouterUsager(Usager *usager)
 {
     // TODO
-	bool ajouter = true;
+	bool ajouterUsager = true;
 	for (unsigned int i = 0; i < usagers_.size(); i++) {
 		if (usagers_[i] == usager) {
-			ajouter = false;
+			ajouterUsager = false;
 		}
 	}
-	if (ajouter == true) {
+	if (ajouterUsager == true) {
 		usagers_.push_back(usager);
 	}
 }
@@ -39,9 +39,16 @@ void Gestionnaire::ajouterUsager(Usager *usager)
 void Gestionnaire::reinitialiser()
 {
     // TODO
+    for (unsigned int i = 0; i < usagers_.size(); i++) {
+        usagers_[i]->reinitialiser();
+    }
 }
 
 void Gestionnaire::encherir(Client *client, ProduitAuxEncheres *produit, double montant) const
 {
     // TODO
+    if (montant <= produit->obtenirPrix()) {
+    }
+    else
+        produit->mettreAJourEnchere(client, montant);
 }

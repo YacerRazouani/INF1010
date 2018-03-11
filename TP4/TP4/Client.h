@@ -11,20 +11,24 @@ using namespace std;
 class Client : public Usager
 {
   public:
+    //Constructeurs
     Client(unsigned int codeClient = 0);
     Client(const string &nom, const string &prenom, int identifiant, const string &codePostal, unsigned int codeClient = 0);
-
+    
+    //Methode d'acces
     unsigned int obtenirCodeClient() const;
     vector<Produit *> obtenirPanier() const;
     virtual double obtenirTotalAPayer() const;
     void afficherPanier() const;
     virtual void afficherProfil() const;
 
+    //Methode de modifications
     void modifierCodeClient(unsigned int codeClient);
     void enleverProduit(Produit *produit);
     void ajouterProduit(Produit *produit);
     virtual void reinitialiser();
   
+    
   protected:
     vector<Produit *> panier_;
 
