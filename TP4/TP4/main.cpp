@@ -118,7 +118,7 @@ int main()
     poly.encherir(&julie, &violoncelle, 6000.0);
     tests.push_back(julie.obtenirPanier().size() == 0);
     poly.encherir(&julie, &violoncelle, 7000.0);
-    tests.push_back(julie.obtenirPanier().size() == 1);
+    tests.push_back(julie.obtenirPanier().size() == 1);				//15
     // on ne peut pas surencherir sur sa propre enchère
     poly.encherir(&julie, &violoncelle, 8000.0);
     tests.push_back(violoncelle.obtenirPrix() == 7000.0);

@@ -23,8 +23,11 @@ unsigned int ClientPremium::obtenirJoursRestants() const
 double ClientPremium::obtenirTotalAPayer() const
 {
     // TODO
-	double total = Client::obtenirTotalAPayer();
-	total -= (panier_.size() * 5);
+	double total = Client::obtenirTotalAPayer() - (5 * panier_.size());
+	for (unsigned int i = 0; i < panier_.size(); i++) {                       // Cette boucle permet de parcourir les produits des clients et de vérifier si
+		if (panier_[i]->obtenirPrix() < 5)                                    // certains produits n'ont pas coûtés moins que 0 $. Elle permet de rajouter la
+			total += 5 - panier_[i]->obtenirPrix();                     // somme nécessaire afin de remmettre le coût d'un produit à 0$, après avoir appliqué
+	}                                                                         // le rabais de client premium.
 	return total;
 }
 

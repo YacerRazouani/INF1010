@@ -19,8 +19,8 @@ class Fournisseur : public Usager
     virtual void afficherProfil() const;
 
     virtual void reinitialiser();
-    void ajouterProduit(Produit *produit);
-    void enleverProduit(Produit *produit);
+    virtual void ajouterProduit(Produit *produit);
+    virtual void enleverProduit(Produit *produit);
 
   private:
     vector<Produit *> catalogue_;

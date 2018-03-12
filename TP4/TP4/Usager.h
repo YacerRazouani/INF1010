@@ -24,8 +24,8 @@ class Usager
     void modifierIdentifiant(int identifiant);
     void modifierCodePostal(const string &codePostal);
     virtual void reinitialiser();
-    void ajouterProduit(Produit *produit);
-    void enleverProduit(Produit *produit);
+    virtual void ajouterProduit(Produit *produit);
+    virtual void enleverProduit(Produit *produit);
 
   private:
     string nom_;

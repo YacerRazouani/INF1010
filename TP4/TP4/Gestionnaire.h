@@ -16,7 +16,7 @@ class Gestionnaire
     double obtenirChiffreAffaires() const;
 
     void ajouterUsager(Usager *usager);
-    void reinitialiser();
+    virtual void reinitialiser();
     void encherir(Client *client, ProduitAuxEncheres *produit, double montant) const;
 
   private:

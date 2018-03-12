@@ -69,3 +69,11 @@ void Usager::reinitialiser()
 {
 
 }
+
+void Usager::ajouterProduit(Produit * produit)
+{
+}
+
+void Usager::enleverProduit(Produit * produit)
+{
+}

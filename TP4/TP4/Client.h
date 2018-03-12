@@ -21,8 +21,8 @@ class Client : public Usager
     virtual void afficherProfil() const;
 
     void modifierCodeClient(unsigned int codeClient);
-    void enleverProduit(Produit *produit);
-    void ajouterProduit(Produit *produit);
+    virtual void enleverProduit(Produit *produit);
+    virtual void ajouterProduit(Produit *produit);
     virtual void reinitialiser();
   
   protected:

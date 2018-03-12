@@ -39,9 +39,16 @@ void Gestionnaire::ajouterUsager(Usager *usager)
 void Gestionnaire::reinitialiser()
 {
     // TODO
+	for (unsigned int i = 0; i < usagers_.size(); i++) {
+		usagers_[i]->reinitialiser();
+	}
 }
 
 void Gestionnaire::encherir(Client *client, ProduitAuxEncheres *produit, double montant) const
 {
     // TODO
+	if (montant <= produit->obtenirPrix()) {
+	}
+	else
+		produit->mettreAJourEnchere(client, montant);
 }

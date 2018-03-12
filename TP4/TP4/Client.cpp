@@ -83,7 +83,9 @@ void Client::reinitialiser()
 	
 	for (unsigned int i = 0; i < panier_.size(); i++) {
 		if (ProduitAuxEncheres* produit = dynamic_cast<ProduitAuxEncheres*>(panier_[i])) {
-			produit->mettreAJourEnchere(nullptr, produit->obtenirPrixInitial());
+			//produit->mettreAJourEnchere(nullptr, produit->obtenirPrixInitial());
+			produit->modifierPrix(produit->obtenirPrixInitial());
+			produit->modifierEncherisseur(nullptr);
 		}
 	}
 	panier_.clear();
