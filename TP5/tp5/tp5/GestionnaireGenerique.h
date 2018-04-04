@@ -16,11 +16,11 @@
 - pourChaqueElement()
 */
 
-template<typename T, typename C, typename A, typename S>
+template<typename T, typename C, typename A, typename S, typename P>
 class GestionnaireGenerique
 {
 public:
-	obtenirConteneur()
+	C obtenirConteneur()
 	{
 		return conteneur_;
 	}
@@ -29,14 +29,14 @@ public:
 		A foncteurAjout(conteneur_);
 		foncteurAjout(t);
 	}
-	supprimer(T* t)
+	void supprimer(T* t)
 	{
 		S foncteurSupprimer(conteneur_);
 		foncteurSupprimer(t);
 	}
-	pourChaqueElement()
+	void pourChaqueElement(P Predicat)
 	{
-
+		for_each(conteneur_.begin(), conteneur_.end(), Predicat);
 	}
 protected:
 	C conteneur_;

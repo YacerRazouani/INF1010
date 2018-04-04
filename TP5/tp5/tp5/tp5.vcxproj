@@ -149,7 +149,6 @@
   <ItemGroup>
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="ClientPremium.cpp" />
-    <ClCompile Include="Foncteur.cpp" />
     <ClCompile Include="Fournisseur.cpp" />
     <ClCompile Include="Gestionnaire.cpp" />
     <ClCompile Include="GestionnaireProduits.cpp" />

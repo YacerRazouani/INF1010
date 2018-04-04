@@ -64,7 +64,7 @@ public:
 	
 	void operator() (pair<int, Produit*> pair)
 	{
-		int nouveauPrix = ((pair.second)->obtenirPrix() - (pair.first * (pair.second)->obtenirPrix()));
+		double nouveauPrix = ((pair.second)->obtenirPrix() - (pair.first * (pair.second)->obtenirPrix()));
 		(pair.second)->modifierPrix(nouveauPrix);
 	}
 private:
@@ -86,7 +86,7 @@ public:
 	{}
 	bool operator() (pair<int, Produit*> pair)
 	{
-		if (borneInf_ < pair.second->obtenirPrix() && pair.second->obtenirPrix() < borneSup_)
+		if (borneInf_ <= pair.second->obtenirPrix() && pair.second->obtenirPrix() <= borneSup_)
 			return 1;
 		else
 			return 0;
@@ -125,7 +125,7 @@ Méthodes :
 				on supprime le Produit et on retourne la multimap_,
 				sinon on retourne juste la multimap_ sans supprimer l'élément.
 */
-template<typename T>
+
 class SupprimerProduit
 {
 public:
@@ -133,8 +133,8 @@ public:
 	{}
 	void operator() (Produit* produit)
 	{
-		FoncteurEgal foncteurEgal = FoncteurEgal(produit);
-		multimap<int, Produit*>::iterator it = find_if(multimap_.begin(), multimap_.end(), foncteurEgal());
+		FoncteurEgal <Produit> foncteurEgal(produit);
+		multimap<int, Produit*>::iterator it = find_if(multimap_.begin(), multimap_.end(), foncteurEgal);
 		if (it != multimap_.end())
 			multimap_.erase(it);
 	}
@@ -162,7 +162,7 @@ private:
 	set<Usager*> &set_;
 };
 
-
+// Foncteur SupprimerUsager
 template<typename T>
 class SupprimerUsager
 {
