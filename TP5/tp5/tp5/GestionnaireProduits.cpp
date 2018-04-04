@@ -62,7 +62,7 @@ double GestionnaireProduits::obtenirTotalApayerPremium()
 	return total;
 }
 
-Produit GestionnaireProduits::trouverProduitPlusCher()
+Produit* GestionnaireProduits::trouverProduitPlusCher()
 {
 	auto comparaison = [](pair<int,Produit*> a, pair<int,Produit*> b) -> bool {
 		return a.second->obtenirPrix() > b.second->obtenirPrix();
@@ -70,7 +70,7 @@ Produit GestionnaireProduits::trouverProduitPlusCher()
 
 	multimap<int, Produit*>::iterator it = max_element(conteneur_.begin(), conteneur_.end(), comparaison);
 
-	return *((*it).second);
+	return ((*it).second);
 }
 
 vector<pair<int, Produit*>> GestionnaireProduits::obtenirProduitsEntre(double lw, double hr)

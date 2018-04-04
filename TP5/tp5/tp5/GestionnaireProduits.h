@@ -33,7 +33,7 @@ public:
 	void afficher();
 	double obtenirTotalAPayer();
 	double obtenirTotalApayerPremium();
-	Produit trouverProduitPlusCher();
+	Produit* trouverProduitPlusCher();
 	vector<pair<int, Produit*>> obtenirProduitsEntre(double lw, double hr);
 	Produit* obtenirProduitSuivant(Produit*);
 };
