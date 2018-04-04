@@ -152,29 +152,30 @@ Méthodes :
 class AjouterUsager
 {
 public:
-	AjouterUsager(set<Usager*> set) : set_(set)
+	AjouterUsager(set<Usager*> &set) : set_(set)
 	{}
 	void operator() (Usager* usager)
 	{
 		set_.insert(usager);
 	}
 private:
-	set<Usager*> &set_;
+	set<Usager*> set_;
 };
 
 // Foncteur SupprimerUsager
-template<typename T>
 class SupprimerUsager
 {
 public:
-	SupprimerUsager(set<Usager*> set) : set_(set)
+	SupprimerUsager(set<Usager*> &set) : set_(set)
 	{}
-	void operator() (Usager* usager)
+	set<Usager*>& operator() (Usager* usager)
 	{
-		FoncteurEgal foncteurEgal = FoncteurEgal(produit);
-		set<Usager*>::iterator it = find_if(set_.begin(), set_.end(), foncteurEgal());
-		if (it != set_.end())
-			set_.erase(it);
+		for (set<Usager*>::iterator it = set_.begin(); it != set_.end(); it++) {
+			if (*it == usager) {
+				set_.erase(it);
+			}
+		}
+		return set_;
 	}
 private:
 	set<Usager*> &set_;
