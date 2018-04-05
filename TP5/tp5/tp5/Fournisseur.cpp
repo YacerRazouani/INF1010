@@ -2,23 +2,21 @@
 #include <iostream>
 
 Fournisseur::Fournisseur()
-    : Usager()
+    : Usager(), catalogue_(new GestionnaireProduits)
 {
-	catalogue_ = new GestionnaireProduits;
+
 }
 
 Fournisseur::Fournisseur(const string &nom, const string &prenom, int identifiant,
                          const string &codePostal)
-    : Usager(nom, prenom, identifiant, codePostal)
+    : Usager(nom, prenom, identifiant, codePostal), catalogue_(new GestionnaireProduits)
 {
-	// TODO : À modifier
-	catalogue_ = new GestionnaireProduits;
+	// TODO : À modifiercatalogue_ = new GestionnaireProduits
 }
 
 Fournisseur::~Fournisseur()
 {
 	delete catalogue_;
-	catalogue_ = 0;
 }
 
 GestionnaireProduits* Fournisseur::obtenirCatalogue() const
@@ -63,4 +61,14 @@ void Fournisseur::enleverProduit(Produit *produit)
 	// TODO : À modifier
     produit->modifierFournisseur(nullptr);
 	catalogue_->supprimer(produit);
+}
+
+Produit * Fournisseur::trouverProduitPlusCher() const
+{
+	return catalogue_->trouverProduitPlusCher();
+}
+
+void Fournisseur::DiminuerPrix(int pourcent) const
+{
+	catalogue_->pourChaqueElement(FoncteurDiminuerPourcent(pourcent));
 }

@@ -41,9 +41,9 @@ Méthodes :
 class FoncteurGenerateurId
 {
 public:
-	void operator() ()
+	int operator() ()
 	{
-		id_++;
+		return id_++;
 	}
 private:
 	int id_ = 0;
@@ -64,8 +64,8 @@ public:
 	
 	void operator() (pair<int, Produit*> pair)
 	{
-		double nouveauPrix = ((pair.second)->obtenirPrix() - (pair.first * (pair.second)->obtenirPrix()));
-		(pair.second)->modifierPrix(nouveauPrix);
+		double nouveauPrix = (pair.second->Produit::obtenirPrix() - (pourcentage_/100.0 * pair.second->Produit::obtenirPrix()));
+		pair.second->modifierPrix(nouveauPrix);
 	}
 private:
 	int pourcentage_;
@@ -108,12 +108,13 @@ class AjouterProduit
 public:
 	AjouterProduit(multimap<int, Produit*> &multimap) : multimap_(multimap)
 	{}
-	void operator() (Produit* produit)
+	multimap<int, Produit*>& operator() (Produit* produit)
 	{
 		multimap_.insert(pair<int, Produit*> (produit->obtenirReference(), produit));
+		return multimap_;
 	}
 private:
-	multimap<int, Produit*> multimap_;
+	multimap<int, Produit*>& multimap_;
 };
 
 // TODO : Créer le Foncteur SupprimerProduit
@@ -131,12 +132,13 @@ class SupprimerProduit
 public:
 	SupprimerProduit(multimap<int, Produit*> &multimap) : multimap_(multimap)
 	{}
-	void operator() (Produit* produit)
+	multimap<int, Produit*>& operator() (Produit* produit)
 	{
 		FoncteurEgal <Produit> foncteurEgal(produit);
 		multimap<int, Produit*>::iterator it = find_if(multimap_.begin(), multimap_.end(), foncteurEgal);
 		if (it != multimap_.end())
 			multimap_.erase(it);
+		return multimap_;
 	}
 private:
 	multimap<int, Produit*> &multimap_;
@@ -154,12 +156,13 @@ class AjouterUsager
 public:
 	AjouterUsager(set<Usager*> &set) : set_(set)
 	{}
-	void operator() (Usager* usager)
+	set<Usager*>& operator() (Usager* usager)
 	{
 		set_.insert(usager);
+		return set_;
 	}
 private:
-	set<Usager*> set_;
+	set<Usager*> &set_;
 };
 
 // Foncteur SupprimerUsager

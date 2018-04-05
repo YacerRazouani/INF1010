@@ -4,25 +4,22 @@
 
 Client::Client(unsigned int codeClient)
     : Usager(),
-      codeClient_(codeClient)
+      codeClient_(codeClient), panier_(new GestionnaireProduits)
 {
 	// TODO : À modifier
-	panier_ = new GestionnaireProduits;
 }
 
 Client::Client(const string &nom, const string &prenom, int identifiant,
                const string &codePostal, unsigned int codeClient)
     : Usager(nom, prenom, identifiant, codePostal),
-      codeClient_(codeClient)
+      codeClient_(codeClient), panier_(new GestionnaireProduits)
 {
 	// TODO : À modifier
-	panier_ = new GestionnaireProduits;
 }
 
 Client::~Client()
 {
 	delete panier_;
-	panier_ = 0;
 }
 
 unsigned int Client::obtenirCodeClient() const

@@ -6,7 +6,7 @@
 
 #include "GestionnaireUsagers.h"
 
-double GestionnaireUsager::obtenirChiffreAffaires() const
+double GestionnaireUsagers::obtenirChiffreAffaires() const
 {
 	double chiffreAffaires = 0.0;
 	for (set<Usager*>::iterator it = conteneur_.begin(); it != conteneur_.end(); it++){
@@ -15,20 +15,21 @@ double GestionnaireUsager::obtenirChiffreAffaires() const
 	return chiffreAffaires;
 }
 
-void GestionnaireUsager::encherir(Client * client, ProduitAuxEncheres * produit, double montant) const
+void GestionnaireUsagers::encherir(Client * client, ProduitAuxEncheres * produit, double montant) const
 {
-	if (produit->obtenirPrix() < montant)
+	if (produit->obtenirPrix() < montant) {
 		produit->mettreAJourEnchere(client, montant);
+	}
 }
 
-void GestionnaireUsager::reinitialiser()
+void GestionnaireUsagers::reinitialiser()
 {
 	for (set<Usager*>::iterator it = conteneur_.begin(); it != conteneur_.end(); it++) {
 		(*it)->reinitialiser();
 	}
 }
 
-void GestionnaireUsager::afficherProfils() const
+void GestionnaireUsagers::afficherProfils() const
 {
 	cout << "PROFILS" << endl;
 	for (set<Usager*>::iterator it = conteneur_.begin(); it != conteneur_.end(); it++) {

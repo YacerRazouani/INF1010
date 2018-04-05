@@ -18,7 +18,7 @@ void GestionnaireProduits::reinitialiserClient()
 	for (multimap<int, Produit*>::iterator it = conteneur_.begin(); it != conteneur_.end(); it++) {
 		if (ProduitAuxEncheres* produit = dynamic_cast<ProduitAuxEncheres*>((*it).second)) {
 			produit->modifierEncherisseur(nullptr);
-			produit->modifierPrixInitial(produit->obtenirPrixInitial());
+			produit->modifierPrix(produit->obtenirPrixInitial());
 		}
 	}
 	conteneur_.clear();
@@ -64,8 +64,10 @@ double GestionnaireProduits::obtenirTotalApayerPremium()
 
 Produit* GestionnaireProduits::trouverProduitPlusCher()
 {
+	if (conteneur_.empty())
+		return nullptr;
 	auto comparaison = [](pair<int,Produit*> a, pair<int,Produit*> b) -> bool {
-		return a.second->obtenirPrix() > b.second->obtenirPrix();
+		return a.second->obtenirPrix() < b.second->obtenirPrix();
 	};
 
 	multimap<int, Produit*>::iterator it = max_element(conteneur_.begin(), conteneur_.end(), comparaison);

@@ -24,7 +24,7 @@ Les méthodes retrouvées de la classe Gestionnaire sont :
 - void afficherProfils() const;
 */
 
-class GestionnaireUsager : public GestionnaireGenerique <Usager, set<Usager*>, AjouterUsager, SupprimerUsager, FoncteurDiminuerPourcent>
+class GestionnaireUsagers : public GestionnaireGenerique <Usager, set<Usager*>, AjouterUsager, SupprimerUsager, FoncteurDiminuerPourcent>
 {
 public:
 	double obtenirChiffreAffaires() const;

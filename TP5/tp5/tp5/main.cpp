@@ -260,7 +260,7 @@ int main()
 
 	// TEST 49 : trouver le produit le plus chère doit fonctionner selon les test suivants
 	tests.push_back(gaspard.trouverProduitPlusCher()->obtenirReference() == 6 &&
-					samuel.trouverProduitPlusCher()->obtenirReference() == 6 &&
+				samuel.trouverProduitPlusCher()->obtenirReference() == 6 &&
 					ratus.trouverProduitPlusCher() == nullptr);
 
 	// TEST 50 : diminuer le prix des produits doit mettre a jour tous les produits du fournisseur
@@ -276,6 +276,7 @@ int main()
 		cout << "asdfljshfgkjsh" << endl;
 		intervalleProduit[i].second->afficher();
 	}*/
+	
 	tests.push_back(intervalleProduit.size() == 2 &&
 		intervalleProduit[0].second->obtenirPrix() >= 20.0 &&
 		intervalleProduit[intervalleProduit.size() - 1].second->obtenirPrix() <= 2000.0);
@@ -283,7 +284,7 @@ int main()
 	// TEST 52 : obtenir un produit avec un prix inférieur ou égal à 200
 	tests.push_back(julie.obtenirPanier()->obtenirProduitSuivant(&montre)->obtenirNom() == "nem crevettes" &&
 					julie.obtenirPanier()->obtenirProduitSuivant(&montre)->obtenirReference() > 6 &&
-					julie.obtenirPanier()->obtenirProduitSuivant(&montre) == &nem);
+					julie.obtenirPanier()->obtenirProduitSuivant(&montre) == &nem); 
 
     // fonctions d'affichage
     gaspard.afficherPanier();
