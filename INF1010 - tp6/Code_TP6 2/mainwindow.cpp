@@ -437,9 +437,6 @@ void MainWindow::ajouterUsager() {
 
     /*À Faire*/
 
-    //Utilisation d'un try throw catch pour faire un popup message si tous les champs ne sont pas remplis
-    /*...*/
-
     //On trouve le bon type d'usager selon le bouton radio sélectionné
     /*...*/
     QRadioButton* selectedType = 0;
@@ -451,32 +448,62 @@ void MainWindow::ajouterUsager() {
         }
     }
 
-
-    // On créé le bon type d'usager selon le cas
+    //Utilisation d'un try throw catch pour faire un popup message si tous les champs ne sont pas remplis
     /*...*/
-    if (selectedType->text().endsWith("Fournisseur")) {
-            nouvelUsager = new Fournisseur(editeurNom->text().toStdString(),
-                                         editeurPrenom->text().toStdString(),
-                                        editeurIdentifiant->text().toInt(),
-                                      editeurCodePostal->text().toStdString()
-                                      );
-        } else if (selectedType->text().endsWith("Client")) {
-           nouvelUsager = new Client(editeurNom->text().toStdString(),
-                                     editeurPrenom->text().toStdString(),
-                                        editeurIdentifiant->text().toInt(),
-                                        editeurCodePostal->text().toStdString()
-                                    );
-        } else {
-            nouvelUsager = new ClientPremium(editeurNom->text().toStdString(),
-                                             editeurPrenom->text().toStdString(),
-                                             editeurIdentifiant->text().toInt(),
-                                             editeurCodePostal->text().toStdString(),
-                                             editeurJoursRestants->text().toInt());
-        }
 
+    try {
+          string nom = editeurNom->text().toStdString();
+          if (nom == "") {
+              throw ExceptionArgumentInvalide("Erreur : Le champs nom est invalide! ");
+          }
+          string prenom = editeurPrenom->text().toStdString();
+          if (prenom == "") {
+              throw ExceptionArgumentInvalide("Erreur : Le champs prénom est invalide!");
+          }
+          bool ok;
+          int identifiant = editeurIdentifiant->text().toInt(&ok);
+          if (!ok) {
+              throw ExceptionArgumentInvalide("Erreur : Le champs identifiant est invalide! ");
+          }
+          string codePostal= editeurCodePostal->text().toStdString();
+          if (codePostal == "") {
+              throw ExceptionArgumentInvalide("Erreur : Le champs code postal est invalide!");
+          }
+          // On créé le bon type d'usager selon le cas
+          /*...*/
+          if(selectedType->text().endsWith("ClientPremium"))
+          {
+              int joursRestants = editeurJoursRestants->text().toInt(&ok);
+              if(!ok){
+                  throw ExceptionArgumentInvalide("Erreur : Le champs nombre de jours restants est invalide! ");
+              }
+              nouvelUsager = new ClientPremium(editeurNom->text().toStdString(),
+                                               editeurPrenom->text().toStdString(),
+                                               editeurIdentifiant->text().toInt(),
+                                               editeurCodePostal->text().toStdString(),
+                                               editeurJoursRestants->text().toInt());
+          } else if(selectedType->text().endsWith("Fournisseur")) {
+              nouvelUsager = new Fournisseur(editeurNom->text().toStdString(),
+                                           editeurPrenom->text().toStdString(),
+                                          editeurIdentifiant->text().toInt(),
+                                        editeurCodePostal->text().toStdString());
+          } else
+          {
+             nouvelUsager = new Client(editeurNom->text().toStdString(),
+                                       editeurPrenom->text().toStdString(),
+                                          editeurIdentifiant->text().toInt(),
+                                          editeurCodePostal->text().toStdString());
+          }
+
+    }catch (ExceptionArgumentInvalide& e) {
+        QMessageBox messageBox;
+        messageBox.critical(0, "Erreur lors de l'ajout d'un nouvel usager", e.what());
+        return;
+    }
 
     //Vérification que tous les champs ont été complétés
-    /*...*/
+    /*.  ???????  ..*/
+
 
     // On ajoute le nouvel usager créé au gestionnaire
     /*...*/
