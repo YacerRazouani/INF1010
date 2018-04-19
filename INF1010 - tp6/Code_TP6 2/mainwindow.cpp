@@ -1,3 +1,8 @@
+/********************************************
+ * Titre: Travail pratique #6 - mainwindow.cpp
+ * Date: 18 avril 2018
+ * Modifier par: Amar Ghaly (1905322) & Yacer Razouani (1899606)
+ *******************************************/
 #include <QAction>
 #include <QMenu>
 #include <QMenuBar>
@@ -56,6 +61,11 @@ void MainWindow::setup() {
     chargerUsagers();
 }
 
+/**
+ * @brief MainWindow::setConnections, connecte les "signals" aux "slots" approprier
+ * @param aucun
+ * @return void
+ */
 void MainWindow::setConnections()
 {
    /*À Faire*/
@@ -64,6 +74,11 @@ void MainWindow::setConnections()
 
 }
 
+/**
+ * @brief MainWindow::setMenu, le menu de l'interface
+ * @param aucun
+ * @return void
+ */
 void MainWindow::setMenu() {
 
     // On crée un bouton 'Exit'
@@ -82,6 +97,11 @@ void MainWindow::setMenu() {
     fileMenu->addAction(exit);
 }
 
+/**
+ * @brief MainWindow::setUI, l'interface et son design
+ * @param aucun
+ * @return void
+ */
 void MainWindow::setUI() {
 
     // Le sélecteur pour filtrer ce que l'on souhaite dans la liste (QComboBox*)
@@ -257,7 +277,11 @@ void MainWindow::setUI() {
     setWindowTitle(title.c_str());
 }
 
-//Cette fonction crée une boite de message de type popup
+/**
+ * @brief MainWindow::afficherMessage, cette fonction crée une boite de message de type popup
+ * @param msg de type QString
+ * @return void
+ */
 void MainWindow::afficherMessage(QString msg) {
     /*À Faire*/
     QMessageBox message;
@@ -265,7 +289,11 @@ void MainWindow::afficherMessage(QString msg) {
     message.exec();
 }
 
-//Charger tous les usagers connus
+/**
+ * @brief MainWindow::chargerUsagers, cette fonction charge tous les usagers connus
+ * @param aucun
+ * @return void
+ */
 void MainWindow::chargerUsagers() {
     // On s'assure que la liste est vide
     listUsager->clear();
@@ -286,7 +314,11 @@ void MainWindow::chargerUsagers() {
     }
 }
 
-//Fonction qui retourne un boolean sur le type de filtre choisi
+/**
+ * @brief MainWindow::chargerUsagers, cette fonction retourne un boolean sur le type de filtre choisis
+ * @param usager de type pointeur Usager
+ * @return bool
+ */
 bool MainWindow::filtrerMasque(Usager* usager) {
     switch (indexCourantDuFiltre_) {
     case 1:
@@ -301,7 +333,11 @@ bool MainWindow::filtrerMasque(Usager* usager) {
     }
 }
 
-//Fonction qui affiche les usagers d'un certain type selon l'index donné en paramètre
+/**
+ * @brief MainWindow::filtrerListe, cette fonction affiche les usagers d'un certain type selon l'index donné en paramètre
+ * @param index de type int
+ * @return void
+ */
 //Il s'agit des champs du dropdown menu ( Tous les usagers = 0 , Tous les clients reguliers = 1, tous les fournisseurs = 2...)
 void MainWindow::filtrerListe(int index) {
     /*À Faire*/
@@ -314,7 +350,11 @@ void MainWindow::filtrerListe(int index) {
     }
 }
 
-//Fonction qui affiche les informations de l'usager sélectionné à partir de la liste.
+/**
+ * @brief MainWindow::selectionnerUsager, cette fonction affiche les informations de l'usager sélectionné à partir de la liste.
+ * @param item de type pointeur QListWidgetItem
+ * @return void
+ */
 //Ses informations sont affichées dans les boîtes de texte du panneau de droite.
 //Les champs sont disabled à l'utilisateur pour éviter qu'il ne modifie l'objet
 void MainWindow::selectionnerUsager(QListWidgetItem* item) {
@@ -361,7 +401,11 @@ void MainWindow::selectionnerUsager(QListWidgetItem* item) {
     boutonSupprimer->setDisabled(false);
 }
 
-//On remet à neuf la vue tel qu'on puisse y ajouter un nouvel usager
+/**
+ * @brief MainWindow::nettoyerVue, cette fonction remet à neuf la vue tel qu'on puisse y ajouter un nouvel usager
+ * @param aucun
+ * @return void
+ */
 void MainWindow::nettoyerVue() {
     editeurNom->setDisabled(false);
     editeurNom->setText("");
@@ -393,6 +437,11 @@ void MainWindow::nettoyerVue() {
     editeurNom->setFocus();
 }
 
+/**
+ * @brief MainWindow::changerTypeUsager
+ * @param index de type int
+ * @return void
+ */
 //Le champ JoursRestants est activé seulement s'il s'agit d'un ClientPremium
 void MainWindow::changerTypeUsager(int index) {
     if (index == -2) {
@@ -402,7 +451,11 @@ void MainWindow::changerTypeUsager(int index) {
     }
 }
 
-//Supprimer tous les usagers de la liste
+/**
+ * @brief MainWindow::supprimerTousLesUsagers, cette fonction supprime tous les usagers de la liste
+ * @param aucun
+ * @return void
+ */
 void MainWindow::supprimerTousLesUsagers() {
     /*À Faire*/
     vector<Usager*> aSupprimer;
@@ -416,7 +469,11 @@ void MainWindow::supprimerTousLesUsagers() {
      }
 }
 
-//Supprime l'usager sélectionné dans la liste
+/**
+ * @brief MainWindow::supprimerUsagerSelectionne, cette fonction supprime l'usager sélectionné dans la liste
+ * @param aucun
+ * @return void
+ */
 void MainWindow::supprimerUsagerSelectionne() {
     /*À Faire*/
     vector<Usager*> aSupprimer;
@@ -430,7 +487,11 @@ void MainWindow::supprimerUsagerSelectionne() {
      }
 }
 
-//Ajoute un nouvel usager dans la liste
+/**
+ * @brief MainWindow::ajouterUsager, cette fonction ajoute un nouvel usager dans la liste
+ * @param aucun
+ * @return void
+ */
 void MainWindow::ajouterUsager() {
 
     Usager* nouvelUsager;
@@ -513,7 +574,11 @@ void MainWindow::ajouterUsager() {
     ajoute_.push_back(nouvelUsager);
 }
 
-//Mise à jour de la vue après l'ajout d'un usager
+/**
+ * @brief MainWindow::usagerAEteAjoute, cette fonction met à jour la vue après l'ajout d'un usager
+ * @param u de type pointeur Usager
+ * @return void
+ */
 void MainWindow::usagerAEteAjoute(Usager* u) {
     /*À Faire*/
     // On ajoute le nouvel usager comme item de la QListWidget
@@ -529,8 +594,11 @@ void MainWindow::usagerAEteAjoute(Usager* u) {
     ajoute_.push_back(u);
 }
 
-
-//Mise à jour de la vue après la suppression d'un usager
+/**
+ * @brief MainWindow::usagerAEteSupprime, cette fonction met à jour la vue après la suppression d'un usager
+ * @param u de type pointeur Usager
+ * @return void
+ */
 void MainWindow::usagerAEteSupprime(Usager* u) {
     // On cherche dans notre QlistWidget l'usager pour lequel le
     // signal a été envoyé, afin de l'en retirer

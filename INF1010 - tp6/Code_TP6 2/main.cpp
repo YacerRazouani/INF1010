@@ -3,6 +3,12 @@
 #include "Fournisseur.h"
 #include <QApplication>
 
+/**
+ * @brief main Main function of the program
+ * @param argc Number of arguments received on the command line
+ * @param argv Values of the arguments received on the command line
+ * @return a.exec() if everything went fine
+ */
 int main(int argc, char *argv[])
 {
     Gestionnaire poly;

@@ -1,3 +1,8 @@
+/********************************************
+ * Titre: Travail pratique #5 -Gestionnaire.h
+ * Date: 18 avril 2018
+ * Auteur: Amar Ghaly (1905322) & Yacer Razouani (1899606)
+ *******************************************/
 #ifndef GESTIONNAIRE_H
 #define GESTIONNAIRE_H
 
